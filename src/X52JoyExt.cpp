@@ -130,9 +130,9 @@ void  X52_JoyExt::cb_mfd_text(const x52_joyext::x52_mfdConstPtr &msg)
 			break;
 		}
 	}
-	ROS_INFO("Line 0: %s", mfd_content[0].c_str());
-	ROS_INFO("Line 1: %s", mfd_content[1].c_str());
-	ROS_INFO("Line 2: %s", mfd_content[2].c_str());
+	ROS_DEBUG("Line 0: %s", mfd_content[0].c_str());
+	ROS_DEBUG("Line 1: %s", mfd_content[1].c_str());
+	ROS_DEBUG("Line 2: %s", mfd_content[2].c_str());
 }
 
 void  X52_JoyExt::cb_date(const x52_joyext::x52_dateConstPtr &msg)

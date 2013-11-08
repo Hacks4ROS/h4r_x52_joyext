@@ -217,7 +217,7 @@ int main(int argc, char **argv)
 	n.param<int>("input_type", type, INPUT_FLOAT64);
 	n.param<int>("joy_axis", axis, 0);
 	n.param<int>("color_led",led, 0);
-	ROS_INFO("LED -> %i",led);
+	ROS_DEBUG("LED -> %i",led);
 
 	n.param<std::string>("setup_string", setup, "O|-0.5|G|0|Y|0.5|R");
 
