@@ -2,7 +2,7 @@
 <package>
   <name>x52_joyext</name>
   <version>1.0.0</version>
-  <description>The x52_joyext package</description>
+  <description>The x52_joyext is used for controlling the MFD on the Saitek X52 Pro Joystick. It supports controlling the button led color, setting MFD text, time and brightness.</description>
   <maintainer email="cyborg-x1@gmail.com">Christian Holl</maintainer>
   <license>LGPLv2.1</license>
   <buildtool_depend>catkin</buildtool_depend>
