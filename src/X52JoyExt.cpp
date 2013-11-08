@@ -206,7 +206,7 @@ void X52_JoyExt::send_to_joystick()
 			{
 				if(updateLED[lednum])
 				{
-					ROS_INFO("Setting LED: %i",lednum);
+					ROS_DEBUG("Setting LED: %i",lednum);
 					if(lednum != 0)
 					{
 						int led=(lednum)*2;
@@ -271,6 +271,6 @@ void X52_JoyExt::send_to_joystick()
 			}
 
 		ros::spinOnce();
-		//loop_rate->sleep();
+		loop_rate->sleep();
 	}
 }
