@@ -155,16 +155,16 @@ public:
 
 	void progressValue(T value)
 	{
-//		for (typename std::set<PairSortMod>::iterator it = ranges.begin(); it != ranges.end(); ++it)
-//		{
-//			if(it->second>value)
-//			{
-//				x52_joyext::x52_led_color msg;
-//				msg.color_leds[this->led]=it->first;
-//				pub.publish(msg);
-//				break;
-//			}
-//		}
+		for (typename std::set<PairSortMod>::iterator it = ranges.begin(); it != ranges.end(); ++it)
+		{
+			if(it->second>value)
+			{
+				x52_joyext::x52_led_color msg;
+				msg.color_leds[this->led]=it->first;
+				pub.publish(msg);
+				break;
+			}
+		}
 	}
 
 	void JoyCallback(const sensor_msgs::JoyConstPtr &msg)
@@ -224,12 +224,19 @@ public:
  */
 int main(int argc, char **argv)
 {
-	ros::init(argc, argv, "value2buttonColor");
+	ros::init(argc, argv, "mfd_writer");
 	ros::NodeHandle n("~");
 
 
-	/*Basic setup data*/
+	/*The input type*/
+	int type;
+	n.param<int>("input_type", type, INPUT_FLOAT64);
 
+
+
+
+
+	/*Basic setup data*/
 	int line;	//In which line the string will be placed
 	n.param<int>("line", line, 0);
 
@@ -237,14 +244,16 @@ int main(int argc, char **argv)
 	n.param<int>("pos", pos, 0);
 
 	int field_length; //Field length
-	n.param<int>("pos", field_length, 16);
+	n.param<int>("field_length", field_length, 16);
 
+	int align;//0=Left, 1=Center, 2 (or anything else)=Right
+	n.param<int>("align", align, 0);
 
+	std::string positive_oversize;//String to show if the integer part of a value is bigger then the size (positiv)
+	n.param<std::string>("positive_oversize", positive_oversize, "");
 
-
-	/*The input type*/
-	int type;
-	n.param<int>("input_type", type, INPUT_FLOAT64);
+	std::string negative_oversize;//String to show if the integer part of a value is bigger then the size (negative)
+	n.param<std::string>("negative_oversize", negative_oversize, "");
 
 
 	/*Joy topic additions*/
@@ -256,15 +265,25 @@ int main(int argc, char **argv)
 	n.param<int>("joy_axis_button", axis_button, 0);
 
 
+	/*Shall we print strings instead of value?*/
+	bool stringprint;
+	n.param<bool>("stringprint", stringprint, "");
+
 	/*if we print a string instead of the values*/
 	std::string stringprint_setup;
 	n.param<std::string>("setup_string", stringprint_setup, "");
 
 
+	if(field_length+pos>16)
+	{
+		ROS_ERROR("%s: Field does not fit into display, will be cut!",ros::this_node::getName());
+		field_length-=(field_length+pos)-16;
+	}
 
-
-
-
+	if(field_length==0)
+	{
+		ROS_ERROR("%s: Field length is zero!",ros::this_node::getName());
+	}
 
 
 #define casem(CASE,TYPE,TYPEROS)\
@@ -290,8 +309,8 @@ int main(int argc, char **argv)
 		casem(INPUT_BOOL,bool,Bool)
 		case INPUT_JOY:
 		{
-			//PublishObject< double > obj(&n,setup,led,axis_button, axis_or_button);
-			//obj.startJoy();
+			PublishObject< double > obj(&n,setup,led,axis_button, axis_or_button);
+			obj.startJoy();
 			break;
 		}
 		default:
