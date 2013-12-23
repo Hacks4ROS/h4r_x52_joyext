@@ -238,6 +238,8 @@ int main(int argc, char **argv)
 	n.param<int>("color_led",led, 0);
 	ROS_DEBUG("LED -> %i",led);
 
+
+	//means OFF till -0.5, GREEN till 0, YELLOW till 0.5, and everything greater is RED
 	n.param<std::string>("setup_string", setup, "O|-0.5|G|0|Y|0.5|R");
 
 
