@@ -66,14 +66,16 @@ private:
 	ros::NodeHandle *n;
 	ros::Publisher pub;
 	int led;
-	int axis;
+	bool axis_or_button;
+	int axis_button;
 	ros::Subscriber sub;
 
 
 public:
-	PublishObject(ros::NodeHandle *n, std::string setup, int led, int axis)
+	PublishObject(ros::NodeHandle *n, std::string setup, int led, int axis, bool axis_or_button)
 	:n(n),
-	 axis(axis)
+	 axis_or_button(axis_or_button),
+	 axis_button(axis)
 	{
 		std::vector<std::string> separatedSetup;
 		boost::split(separatedSetup, setup, boost::is_any_of("|"));
@@ -167,13 +169,27 @@ public:
 
 	void JoyCallback(const sensor_msgs::JoyConstPtr &msg)
 	{
-		if(axis<(int)msg->axes.size() && axis>=0)
+		if(axis_or_button==false)//Axis
 		{
-			progressValue((T)msg->axes[axis]);
+			if(axis_button<(int)msg->axes.size() && axis_button>=0)
+			{
+				progressValue((T)msg->axes[axis_button]);
+			}
+			else
+			{
+				ROS_ERROR("Axis %i not available for that Joystick!", axis_button);
+			}
 		}
 		else
 		{
-			ROS_ERROR("Axis %i not available for that Joystick!", axis);
+			if(axis_button<(int)msg->buttons.size() && axis_button>=0)
+			{
+				progressValue((T)msg->buttons[axis_button]);
+			}
+			else
+			{
+				ROS_ERROR("Button %i not available for that Joystick!", axis_button);
+			}
 		}
 	}
 
@@ -211,11 +227,14 @@ int main(int argc, char **argv)
 
 	int type;
 	int led;
-	int axis;
+	bool axis_or_button;
+	int axis_button;
 	std::string setup;
 
+
 	n.param<int>("input_type", type, INPUT_FLOAT64);
-	n.param<int>("joy_axis", axis, 0);
+	n.param<int>("joy_axis_button", axis_button, 0);
+	n.param<bool>("joy_axis_or_button", axis_or_button, 0);
 	n.param<int>("color_led",led, 0);
 	ROS_DEBUG("LED -> %i",led);
 
@@ -226,7 +245,7 @@ int main(int argc, char **argv)
 #define casem(CASE,TYPE,TYPEROS)\
 	case CASE:\
 	{\
-		PublishObject< TYPE > obj(&n,setup,led,axis);\
+		PublishObject< TYPE > obj(&n,setup,led,axis_button,axis_or_button);\
 		obj.start<std_msgs::TYPEROS, std_msgs:: TYPEROS## ConstPtr>();\
 		break;\
 	}\
@@ -246,7 +265,7 @@ int main(int argc, char **argv)
 		casem(INPUT_BOOL,bool,Bool)
 		case INPUT_JOY:
 		{
-			PublishObject< double > obj(&n,setup,led,axis);
+			PublishObject< double > obj(&n,setup,led,axis_button, axis_or_button);
 			obj.startJoy();
 			break;
 		}
