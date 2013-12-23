@@ -53,7 +53,7 @@
 	
 	
 	
-	
+	<!-- Button Example -->
 	<node pkg="x52_joyext" type="x52_value2buttonColor_node" name="Color_Button_2" output="screen"> 
 
 		<param name="input_type" value="9"/>
