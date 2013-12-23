@@ -1,8 +1,9 @@
 x52_joyext
 ===========================================
 ROS package for Ubuntu + Hydro to access the MFD  of the Saitek X52 Pro Joystick.
-Modified from the original x52_joyext by Christian Holl.
-(see https://github.com/cyborg-x1/x52_joyext)
+Written by Christian Holl(see https://github.com/cyborg-x1/x52_joyext), 
+maintained by Murilo F. M. (see https://github.com/muhrix/x52_joyext/)
+
 
 
 Installation
