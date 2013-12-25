@@ -18,4 +18,3 @@
 			<remap from="~/mfd_text" to="/x52/mfd_text" />
 	</node>
 </launch>
-

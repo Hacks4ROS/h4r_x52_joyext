@@ -1,0 +1,23 @@
+authors: Christian Holl <cyborg-x1@gmail.com>
+brief: ''
+bugtracker: ''
+depends:
+- catkin
+- roscpp
+- message_runtime
+- std_msgs
+- libx52pro-dev
+- message_generation
+description: The x52_joyext is used for controlling the MFD on the Saitek X52 Pro
+  Joystick. Modified from original x52_joyext by Christian Holl
+license: BSD
+maintainers: Murilo F. M. <muhrix@gmail.com>
+msgs:
+- x52_led_color
+- x52_time
+- x52_mfd
+- x52_date
+package_type: package
+repo_url: ''
+srvs: []
+url: ''
