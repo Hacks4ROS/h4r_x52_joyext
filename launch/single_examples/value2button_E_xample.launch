@@ -1,6 +1,4 @@
 <launch>
-	<node pkg="joy" type="joy_node" name="Joy" output="screen"/>
-	<node pkg="x52_joyext" type="x52_joyext_node" name="x52" output="screen" />
 	<node pkg="x52_joyext" type="x52_value2buttonColor_node" name="Color_Button_0" output="screen"> 
 	<!--
 		INPUT_FLOAT32	0
@@ -32,9 +30,9 @@
 		<!--
 			Axis(false) or button(true)?
 		-->
-		<param name="color_led" value="0" />
+		<param name="color_led" value="3" />
 		
-		<param name="setup_string" value="R|-0.8|Y|-0.5|G|0.5|Y|0.8|R" />
+		<param name="setup_string" value="G|-0.5|Y|0.5|R"/>
 		<remap from="/Color_Button_0/in" to="/joy" />
 		<remap from="/Color_Button_0/led" to="/x52/leds" />
 	</node>
@@ -47,8 +45,8 @@
 		<param name="color_led" value="1" />
 		
 		<param name="setup_string" value="G|-0.8|Y|-0.5|R|0.5|Y|0.8|G" />
-		<remap from="/Color_Button_1/in" to="/joy" />
-		<remap from="/Color_Button_1/led" to="/x52/leds" />
+		<remap from="~/in" to="/joy" />
+		<remap from="~/led" to="/x52/leds" />
 	</node>
 	
 	
@@ -63,7 +61,7 @@
 		<param name="color_led" value="4" />
 		
 		<param name="setup_string" value="G|0.5|Y|1" />
-		<remap from="/Color_Button_2/in" to="/joy" />
-		<remap from="/Color_Button_2/led" to="/x52/leds" />
+		<remap from="~/in" to="/joy" />
+		<remap from="~/led" to="/x52/leds" />
 	</node>
 </launch>
