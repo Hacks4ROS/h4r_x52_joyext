@@ -1,5 +1,5 @@
 /*
- * value2buttonColor Node
+ * Mfd Writer Node
  * by Christian Holl (www.rad-lab.net)
  * License: BSD
  *
@@ -83,12 +83,12 @@ public:
 		n->param<int>("pos", pos, 0);
 		n->param<int>("field_length", field_length, 16);
 		n->param<int>("align", align, 0);
-		n->param<std::string>("positive_oversize", positive_oversize, "");
-		n->param<std::string>("negative_oversize", negative_oversize, "");
-		n->param<bool>("joy_axis_or_button", axis_or_button, 0);
-		n->param<int>("joy_axis_button", axis_button, 0);
-		n->param<bool>("stringprint", stringprint, "");
-		n->param<std::string>("setup_string", stringprint_setup, "");
+		n->param<std::string>("positive_oversize", positive_oversize, "#");
+		n->param<std::string>("negative_oversize", negative_oversize, "#");
+		n->param<bool>("axis_or_button", axis_or_button, 0);
+		n->param<int>("axis_button", axis_button, 0);
+		n->param<bool>("stringprint", stringprint, 0);
+		n->param<std::string>("stringprint_setup", stringprint_setup, "");
 
 		if (field_length + pos > 16)
 		{
@@ -103,11 +103,13 @@ public:
 					ros::this_node::getName().c_str());
 		}
 
+
 		if (stringprint)
 		{
 			std::vector<std::string> separatedSetup;
 			boost::split(separatedSetup, stringprint_setup,
 					boost::is_any_of("|"));
+			ROS_INFO("%s",stringprint_setup.c_str());
 			PairSortMod pair;
 			unsigned int i;
 
@@ -123,21 +125,31 @@ public:
 						separatedSetup[i].erase(field_length,
 								separatedSetup[i].size() - field_length);
 					}
+					pair.first = separatedSetup[i];
+					ROS_INFO("%s",separatedSetup[i].c_str());
 				}
 				else
 				{
 					std::istringstream ss(separatedSetup[i]);
-					pair.first = separatedSetup[i];
+					T value;
+					ss>>value;
+					std::cout<<"::"<<value<<"\n";
+					if(ss.bad() || ss.fail() || !ss.eof())
+					{
+						ROS_ERROR("Error in setup string: %s",separatedSetup[i].c_str());
+						exit(1);
+					}
+					pair.second=value;
 					this->ranges.insert(pair);
 				}
-
-				if (!i % 2 || i == 0)
-					ROS_ERROR(
-							"Error in setup string, missing string for upper end!");
-				//Get last one
-				pair.second = std::numeric_limits<T>::max();
-				this->ranges.insert(pair);
 			}
+
+			if (!i % 2 || i == 0)
+				ROS_ERROR(
+						"Error in setup string, missing string for upper end!");
+			//Get last one
+			pair.second = std::numeric_limits<T>::max();
+			this->ranges.insert(pair);
 
 		}
 		pub = n->advertise<x52_joyext::x52_mfd>("mfd_text", 1);
@@ -158,7 +170,6 @@ public:
 			{
 				if (it->second > value)
 				{
-
 					msg.pos = pos;
 					msg.line = line;
 					msg.data = it->first;
@@ -180,14 +191,20 @@ public:
 			switch (align)
 			{
 			default:
-			case LEFT:
-				//No need to do anything!
+			case LEFT: //filling up the field to overwrite chars not needed
+				for (int s = 0; s < (msg.data.length() - field_length); ++s)
+				{
+					msg.data.push_back(' ');
+				}
 				break;
 
 			case CENTER: //shift string the size difference devided by two to the right
-				for (int s = 0; s < (msg.data.length() - field_length) / 2; ++s)
+				for (int s = 0; s < ((msg.data.length() - field_length) / 2); ++s)
 				{
+					if(s%2)
 					msg.data.insert(0, " ");
+					else
+					msg.data.push_back(' ');
 				}
 				;
 				break;
