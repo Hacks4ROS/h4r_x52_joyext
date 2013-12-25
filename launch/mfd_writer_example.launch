@@ -11,8 +11,9 @@
 			<param name="negative_oversize" value="--EE--"/>
 			<param name="axis_or_button" value="false"/>
 			<param name="axis_button" value="1"/>
-			<param name="stringprint" value="true"/>
+			<param name="stringprint" value="false"/>
 			<param name="stringprint_setup" value="Down|-0.5|Center|0.5|Up"/>	
+			<param name="char_as_int" value="0"/>	
 			
 			<!-- Remap Topics -->	
 			<remap from="/x52_mfd_writer/in" to="/joy" />

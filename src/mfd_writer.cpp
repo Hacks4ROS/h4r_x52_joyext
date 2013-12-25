@@ -73,6 +73,7 @@ private:
 	int axis_button; //!< The button or axis number if using Joy topic
 	bool stringprint; //!< If this is true, there will be strings instead of values
 	std::string stringprint_setup; //!< if stringprint is enabled, this will store the strings to be displayed
+	int char_as_int; //! A char is interpreted as integer if this is 1 or as unsigned integer if this is 2 and as char on any other value
 
 public:
 	PublishObject(ros::NodeHandle *n) :
@@ -89,6 +90,11 @@ public:
 		n->param<int>("axis_button", axis_button, 0);
 		n->param<bool>("stringprint", stringprint, 0);
 		n->param<std::string>("stringprint_setup", stringprint_setup, "");
+		n->param<int>("char_as_int", char_as_int, 0);
+
+		if(char_as_int!=0)
+			ROS_WARN("%s: char_as_int = %i (assuming 0 -> interpred as char)",ros::this_node::getName().c_str(), char_as_int);
+
 
 		if (field_length + pos > 16)
 		{
@@ -158,7 +164,64 @@ public:
 	{
 	}
 
-	void progressValue(T value)
+
+	template <typename V>
+	std::string get_value_string(V value)
+	{
+
+		x52_joyext::x52_mfd msg;
+		std::ostringstream ss;
+		std::string value_string;
+
+		std::cout<<"::"<<value<<"\n";
+		ss<<value;
+
+
+		return ss.str();
+
+	}
+
+	std::string get_value_string(char value)
+	{
+		x52_joyext::x52_mfd msg;
+		std::ostringstream ss;
+		std::string value_string;
+
+		//std::cout<<"::"<<value<<"\n";
+		{
+			ROS_ERROR("%s: Error in creating (char) value string",ros::this_node::getName().c_str());
+
+			ss.clear();
+
+			for(int c = 0; c < field_length; ++c)
+			{
+				ss<<'E';
+			}
+		}
+
+		if(char_as_int==1)
+		{
+			if(value!=0)
+			ss<<(signed int)value;
+		}
+		else if(char_as_int==2)
+		{
+			ss<<(unsigned int)value;
+		}
+		else
+		{
+			ss<<value;
+		}
+
+		return ss.str();
+	}
+
+
+
+
+
+	template <typename V>
+	void progressValue(V value)
 	{
 		x52_joyext::x52_mfd msg;
 		msg.clearDisplay = false;
@@ -179,12 +242,15 @@ public:
 		}
 		else
 		{
-			x52_joyext::x52_mfd msg;
 			msg.clearDisplay = false;
 			msg.pos = pos;
 			msg.line = line;
-			msg.data;
+			msg.data=get_value_string(value);
+
 		}
+
+
+
 
 		if (msg.data.length() < field_length)
 		{
@@ -218,8 +284,32 @@ public:
 				break;
 			}
 		}
+		else if(msg.data.length()>field_length)
+		{
+			//Decimal point position
+			int dec_pos=msg.data.find('.');
 
-
+			std::cout<<msg.data<<std::endl;
+			if(dec_pos >= 0 && dec_pos==field_length-1) //decimal is the last what fits into field
+			{
+				msg.data.erase(dec_pos,field_length-dec_pos);//erase everything after dec_pos including dec_pos
+			}
+			else if(dec_pos >= 0 && dec_pos<field_length-1)//decimal point is not the last what fits into field
+			{
+				msg.data.erase(field_length-1,msg.data.length()-field_length);//cut off everything whats longer than field
+			}
+			else //The string is over size for that field!
+			{
+				if(value>0)
+				{
+					msg.data=positive_oversize;
+				}
+				else
+				{
+					msg.data=negative_oversize;
+				}
+			}
+		}
 		pub.publish(msg);
 	}
 
@@ -229,7 +319,7 @@ public:
 		{
 			if (axis_button < (int) msg->axes.size() && axis_button >= 0)
 			{
-				progressValue((T) msg->axes[axis_button]);
+				progressValue<double>(msg->axes[axis_button]);
 			}
 			else
 			{
@@ -241,7 +331,7 @@ public:
 		{
 			if (axis_button < (int) msg->buttons.size() && axis_button >= 0)
 			{
-				progressValue((T) msg->buttons[axis_button]);
+				progressValue<bool>(msg->buttons[axis_button]);
 			}
 			else
 			{
