@@ -1,0 +1,21 @@
+<launch>
+	<node pkg="x52_joyext" type="x52_mfd_writer_node" name="x52_mfd_writer_value" output="screen"> 
+			<param name="input_type" value="9"/>
+			<param name="line" value="2"/>
+			<param name="pos" value="0"/>
+			<param name="field_length" value="16"/>
+			<param name="align" value="1"/>
+			<param name="positive_oversize" value="++EE++"/>
+			<param name="negative_oversize" value="--EE--"/>
+			<param name="axis_or_button" value="false"/>
+			<param name="axis_button" value="4"/>
+			<param name="stringprint" value="false"/>
+			<param name="stringprint_setup" value=""/>	
+			<param name="char_as_int" value="0"/>	
+			
+			<!-- Remap Topics -->	
+			<remap from="~/in" to="/joy" />
+			<remap from="~/mfd_text" to="/x52/mfd_text" />
+	</node>
+</launch>
+

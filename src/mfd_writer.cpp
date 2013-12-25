@@ -139,7 +139,6 @@ public:
 					std::istringstream ss(separatedSetup[i]);
 					T value;
 					ss>>value;
-					std::cout<<"::"<<value<<"\n";
 					if(ss.bad() || ss.fail() || !ss.eof())
 					{
 						ROS_ERROR("Error in setup string: %s",separatedSetup[i].c_str());
@@ -158,7 +157,16 @@ public:
 			this->ranges.insert(pair);
 
 		}
-		pub = n->advertise<x52_joyext::x52_mfd>("mfd_text", 1);
+
+		pub = n->advertise<x52_joyext::x52_mfd>("mfd_text", 1,1);
+		x52_joyext::x52_mfd init_msg;
+		init_msg.clearDisplay=false;
+		init_msg.line=line;
+		init_msg.pos=pos;
+		for (int i = 0; i < field_length; ++i) {
+		init_msg.data+="-";
+		}
+		pub.publish(init_msg);
 	}
 	~PublishObject()
 	{
@@ -172,8 +180,6 @@ public:
 		x52_joyext::x52_mfd msg;
 		std::ostringstream ss;
 		std::string value_string;
-
-		std::cout<<"::"<<value<<"\n";
 		ss<<value;
 
 
