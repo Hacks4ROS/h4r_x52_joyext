@@ -15,7 +15,10 @@
    id="svg4102"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="MFDOverview.svg">
+   sodipodi:docname="MFDOverview.svg"
+   inkscape:export-filename="/home/cyborg-x1/ROS/joy_ws/x52_joyext/doc/img/MFDOverview.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4104" />
   <sodipodi:namedview
@@ -26,8 +29,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="591.81961"
-     inkscape:cy="286.96251"
+     inkscape:cx="551.22871"
+     inkscape:cy="292.73743"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -48,7 +51,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -204,7 +207,7 @@
          inkscape:connector-curvature="0"
          id="path3106-27"
          d="m 167.346,183.28567 c -8.02767,3.49632 -17.99988,1.68725 -24.2624,-4.44127 -6.34603,-5.89653 -8.6615,-15.61105 -5.69962,-23.74524 2.86416,-8.43129 11.14658,-14.64772 20.05403,-14.98176 8.65908,-0.55969 17.31421,4.45935 21.17954,12.21786"
-         style="fill:none;stroke:#66ff00;stroke-width:3.00001341;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none" />
+         style="fill:none;stroke:#66ff00;stroke-width:3.00001335;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none" />
       <text
          sodipodi:linespacing="125%"
          id="text3975-5"
@@ -241,13 +244,7 @@
            sodipodi:role="line">33</tspan></text>
     </g>
     <path
-       style="fill:none;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m -185,220 35.71429,0"
-       id="path4346"
-       inkscape:connector-curvature="0"
-       transform="translate(252.64285,420.93362)" />
-    <path
-       style="fill:none;stroke:#00ff00;stroke-width:3.536;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;stroke:#00ff00;stroke-width:3.53600001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m 198.57143,313.92857 0,38.92857 8.39286,8.39286 99.46428,0"
        id="path3024"
        inkscape:connector-curvature="0"
@@ -277,7 +274,7 @@
          y="773.29077"
          style="font-size:10px;fill:#00ff00">AM/PM</tspan></text>
     <path
-       style="fill:none;stroke:#00ff00;stroke-width:3.536;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:none;stroke:#00ff00;stroke-width:3.53600001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m 558.97768,733.25059 0,26.48769 2.86169,2.86168 33.91414,0"
        id="path3024-7"
        inkscape:connector-curvature="0"
@@ -360,5 +357,56 @@
          x="438.44254"
          y="574.8114"
          style="font-size:10px;fill:#00ff00">Mode Switch Status</tspan></text>
+    <path
+       style="fill:none;stroke:#00ff00;stroke-width:3.53600001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 679.57173,608.64515 0,20.21428 -8.3929,8.39286 -315.53572,0"
+       id="path3024-2-6"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:none;stroke:#00ff00;stroke-width:3.53600001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 700.82145,636.55862 0,20.21428 -8.3929,8.39286 -337.00146,0"
+       id="path3024-2-6-7"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:none;stroke:#00ff00;stroke-width:3.53600001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 720.39288,667.84433 0,20.21428 -8.3929,8.39286 -356.4469,0"
+       id="path3024-2-6-2"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#66ff00;fill-opacity:1;stroke:none;font-family:Droid Sans Georgian;-inkscape-font-specification:Droid Sans Georgian"
+       x="668.35718"
+       y="603.79071"
+       id="text4102"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4104"
+         x="668.35718"
+         y="603.79071">0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#66ff00;fill-opacity:1;stroke:none;font-family:Droid Sans Georgian;-inkscape-font-specification:Droid Sans Georgian"
+       x="691.71405"
+       y="631.7193"
+       id="text4106"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4108"
+         x="691.71405"
+         y="631.7193">1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#66ff00;fill-opacity:1;stroke:none;font-family:Droid Sans Georgian;-inkscape-font-specification:Droid Sans Georgian"
+       x="709.57141"
+       y="662.93372"
+       id="text4110"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4112"
+         x="709.57141"
+         y="662.93372">2</tspan></text>
   </g>
 </svg>

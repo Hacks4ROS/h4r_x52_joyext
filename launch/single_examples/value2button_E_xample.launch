@@ -15,15 +15,16 @@
 		<param name="input_type" value="9"/>
 		<param name="joy_axis_button" value="4"/>
 	<!--
-		A		0
-		B		1
-		D		2
-		E		3
-		T12		4
-		T34		5
-		T56		6
-		POV2	7
-		I		8
+		FIRE    0
+		A		1
+		B		2
+		D		3
+		E		4
+		T12		5
+		T34		6
+		T56		7
+		POV2	8
+		I		9
 	-->
 	
 		<param name="joy_axis_or_button" value="false"/>
@@ -53,7 +54,6 @@
 	
 	<!-- Button Example -->
 	<node pkg="x52_joyext" type="x52_value2buttonColor_node" name="Color_Button_2" output="screen"> 
-
 		<param name="input_type" value="9"/>
 		<param name="joy_axis_or_button" value="true"/>
 		<param name="joy_axis_button" value="1"/>
