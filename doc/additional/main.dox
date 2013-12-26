@@ -5,10 +5,9 @@
 * This package is ment to make the additional functionality of the Saitek X52 Pro available to use with ROS.
 * \image html JoystickComplete.png
 *
+* \page x52_general X52 Pro General Overview
 * \page x52_joyext_node
 * \page x52_mfd_writer_node         
 * \page x52_value2buttonColor_node
-* 
-* 
 *
 */
