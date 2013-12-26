@@ -30,7 +30,7 @@
 		<!--
 			Axis(false) or button(true)?
 		-->
-		<param name="color_led" value="3" />
+		<param name="color_led" value="4" />
 		
 		<param name="setup_string" value="G|-0.5|Y|0.5|R"/>
 		<remap from="/Color_Button_0/in" to="/joy" />
@@ -42,7 +42,7 @@
 		<param name="input_type" value="9"/>
 		<param name="joy_axis_button" value="4"/>
 		<param name="joy_axis_or_button" value="false"/>
-		<param name="color_led" value="1" />
+		<param name="color_led" value="2" />
 		
 		<param name="setup_string" value="G|-0.8|Y|-0.5|R|0.5|Y|0.8|G" />
 		<remap from="~/in" to="/joy" />
@@ -56,11 +56,11 @@
 
 		<param name="input_type" value="9"/>
 		<param name="joy_axis_or_button" value="true"/>
-		<param name="joy_axis_button" value="4"/>
+		<param name="joy_axis_button" value="1"/>
 
-		<param name="color_led" value="4" />
+		<param name="color_led" value="0" />
 		
-		<param name="setup_string" value="G|0.5|Y|1" />
+		<param name="setup_string" value="O|0.5|G|1" />
 		<remap from="~/in" to="/joy" />
 		<remap from="~/led" to="/x52/leds" />
 	</node>
