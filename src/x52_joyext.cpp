@@ -220,6 +220,7 @@ void X52_JoyExt::send_to_joystick()
 						x52_setled(hdl,1,LED[0]);
 					}
 					updateLED[lednum]=false;
+					usleep(50);
 				}
 			}
 
@@ -228,6 +229,7 @@ void X52_JoyExt::send_to_joystick()
 			{
 				x52_setbri(hdl,1,brightnessMFD);
 				updateBrightnessMFD=false;
+				usleep(50);
 			}
 
 		//Update Brightness LED
@@ -236,6 +238,7 @@ void X52_JoyExt::send_to_joystick()
 			{
 				x52_setbri(hdl,0,brightnessLED);
 				updateBrightnessLED=false;
+				usleep(50);
 			}
 
 		//Update MFD Text
@@ -246,6 +249,7 @@ void X52_JoyExt::send_to_joystick()
 					x52_settext(hdl,line,(char*)mfd_content[line].c_str(),mfd_content[line].length());
 					updateMFD[line]=false;
 				}
+				usleep(50);
 			}
 
 		//Update Date
@@ -253,6 +257,7 @@ void X52_JoyExt::send_to_joystick()
 			{
 				x52_setdate(hdl,Date[0],Date[1],Date[2]);
 				updateDate=false;
+				usleep(50);
 			}
 
 		//Update  Time
@@ -260,6 +265,7 @@ void X52_JoyExt::send_to_joystick()
 			{
 				x52_settime(hdl,Time_24,Time[0], Time[1]);
 				updateTime=false;
+				usleep(50);
 			}
 
 		//Offset  Time
@@ -270,6 +276,7 @@ void X52_JoyExt::send_to_joystick()
 					x52_setoffs(hdl,o,Offset_24[o],Offset_Inv[o],Offset[o]);
 					updateOffset[o]=false;
 				}
+				usleep(50);
 			}
 
 		ros::spinOnce();
