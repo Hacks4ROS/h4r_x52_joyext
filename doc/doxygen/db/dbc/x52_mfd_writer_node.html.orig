@@ -109,7 +109,11 @@ $(document).ready(function(){initNavTree('db/dbc/x52_mfd_writer_node.html','../.
 <tr>
 <th>input_type </th><th>Description</th></tr>
 <tr>
+<<<<<<< Updated upstream
+<td>0<sub><a class="el" href="../../db/dbc/x52_mfd_writer_node.html#color_std">a</a> </sub> </td><td>float64 </td></tr>
+=======
 <td>0<sub><a class="el" href="../../db/dbc/x52_mfd_writer_node.html#mfd_std">a</a> </sub> </td><td>float64 </td></tr>
+>>>>>>> Stashed changes
 <tr>
 <td>1 </td><td>float32 </td></tr>
 <tr>
@@ -119,7 +123,11 @@ $(document).ready(function(){initNavTree('db/dbc/x52_mfd_writer_node.html','../.
 <tr>
 <td>4 </td><td>int16 </td></tr>
 <tr>
+<<<<<<< Updated upstream
+<td>5<sub><a class="el" href="../../db/dbc/x52_mfd_writer_node.html#color_chr">b</a> </sub> </td><td>int8 </td></tr>
+=======
 <td>5<sub><a class="el" href="../../db/dbc/x52_mfd_writer_node.html#mfd_chr">b</a> </sub> </td><td>int8 </td></tr>
+>>>>>>> Stashed changes
 <tr>
 <td>6 </td><td>uint64 </td></tr>
 <tr>
@@ -127,6 +135,17 @@ $(document).ready(function(){initNavTree('db/dbc/x52_mfd_writer_node.html','../.
 <tr>
 <td>8 </td><td>uint16 </td></tr>
 <tr>
+<<<<<<< Updated upstream
+<td>9<sub><a class="el" href="../../db/dbc/x52_mfd_writer_node.html#color_chr">b</a></sub> </td><td>uint8 </td></tr>
+<tr>
+<td>10 </td><td>bool </td></tr>
+<tr>
+<td>11<sub><a class="el" href="../../db/dbc/x52_mfd_writer_node.html#color_joy">c</a></sub> </td><td>Joy </td></tr>
+</table>
+<p>b)<a class="anchor" id="color_chr"></a>When using a one byte value (mainly known as char in C/C++), it is normally treated as character.<br/>
+ If the number value is wanted instead you have to set the value "char_as_int" to true.</p>
+<p>c)<a class="anchor" id="color_joy"></a>Requires additional setup information, see following table:</p>
+=======
 <td>9<sub><a class="el" href="../../db/dbc/x52_mfd_writer_node.html#mfd_chr">b</a></sub> </td><td>uint8 </td></tr>
 <tr>
 <td>10 </td><td>bool </td></tr>
@@ -136,6 +155,7 @@ $(document).ready(function(){initNavTree('db/dbc/x52_mfd_writer_node.html','../.
 <p>b)<a class="anchor" id="mfd_chr"></a>When using a one byte value (mainly known as char in C/C++), it is normally treated as character.<br/>
  If the number value is wanted instead you have to set the value "char_as_int" to true.</p>
 <p>c)<a class="anchor" id="mfd_joy"></a>Requires additional setup information, see following table:</p>
+>>>>>>> Stashed changes
 <table class="doxtable">
 <tr>
 <th>Parameter </th><th>Description</th></tr>
@@ -160,7 +180,11 @@ $(document).ready(function(){initNavTree('db/dbc/x52_mfd_writer_node.html','../.
 <tr>
 <th>Align </th><th>Description</th></tr>
 <tr>
+<<<<<<< Updated upstream
+<td>0<sub><a class="el" href="../../db/dbc/x52_mfd_writer_node.html#color_std">a</a> </sub> </td><td>Left - The field is filled with spaces from the right side, so that the value is on the left </td></tr>
+=======
 <td>0<sub><a class="el" href="../../db/dbc/x52_mfd_writer_node.html#mfd_std">a</a> </sub> </td><td>Left - The field is filled with spaces from the right side, so that the value is on the left </td></tr>
+>>>>>>> Stashed changes
 <tr>
 <td>1 </td><td>Center - The field is filled with spaces from both sides </td></tr>
 <tr>
@@ -223,7 +247,11 @@ $(document).ready(function(){initNavTree('db/dbc/x52_mfd_writer_node.html','../.
 <p><br/>
 </p>
 <p>Copy&amp;Paste Launchfile Code: </p>
+<<<<<<< Updated upstream
+<pre class="fragment">    &lt;node pkg="x52_joyext" type="x52_mfd_writer_node" name="x52_mfd_writer_string" output="screen"&gt; 
+=======
 <pre class="fragment">    &lt;node pkg="x52_joyext" type="x52_mfd_writer_node" name="x52_mfd_writer_string" output="screen"&gt;
+>>>>>>> Stashed changes
             &lt;param name="input_type" value="11"/&gt;
             &lt;param name="line" value="1"/&gt;
             &lt;param name="pos" value="0"/&gt;
@@ -234,14 +262,23 @@ $(document).ready(function(){initNavTree('db/dbc/x52_mfd_writer_node.html','../.
             &lt;param name="axis_or_button" value="false"/&gt;
             &lt;param name="axis_button" value="4"/&gt;
             &lt;param name="stringprint" value="true"/&gt;
+<<<<<<< Updated upstream
+            &lt;param name="stringprint_setup" value="Green|-0.5|Yellow|0.5|Red"/&gt;     
+            &lt;param name="char_as_int" value="0"/&gt;   
+=======
             &lt;param name="stringprint_setup" value="Green|-0.5|Yellow|0.5|Red"/&gt;
             &lt;param name="char_as_int" value="0"/&gt;
+>>>>>>> Stashed changes
 
 
             &lt;remap from="~/in" to="/joy" /&gt;
             &lt;remap from="~/mfd_text" to="/x52/mfd_text" /&gt;
     &lt;/node&gt;
+<<<<<<< Updated upstream
+</pre><p>a)<a class="anchor" id="color_std"></a>Standard value<br/>
+=======
 </pre><p>a)<a class="anchor" id="mfd_std"></a>Standard value<br/>
+>>>>>>> Stashed changes
  </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->

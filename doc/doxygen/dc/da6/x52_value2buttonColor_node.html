@@ -102,7 +102,133 @@ $(document).ready(function(){initNavTree('dc/da6/x52_value2buttonColor_node.html
 <div class="title">x52_value2buttonColor_node </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"></div></div><!-- contents -->
+<div class="textblock"><p>All supported message types can be seen in the following table, in a launch file, they are specified by the parameter "input_type"</p>
+<table class="doxtable">
+<tr>
+<th>input_type </th><th>Description</th></tr>
+<tr>
+<td>0<sub><a class="el" href="../../dc/da6/x52_value2buttonColor_node.html#col_std">a</a> </sub> </td><td>float64 </td></tr>
+<tr>
+<td>1 </td><td>float32 </td></tr>
+<tr>
+<td>2 </td><td>int64 </td></tr>
+<tr>
+<td>3 </td><td>int32 </td></tr>
+<tr>
+<td>4 </td><td>int16 </td></tr>
+<tr>
+<td>5 </td><td>int8 </td></tr>
+<tr>
+<td>6 </td><td>uint64 </td></tr>
+<tr>
+<td>7 </td><td>uint32 </td></tr>
+<tr>
+<td>8 </td><td>uint16 </td></tr>
+<tr>
+<td>9 </td><td>uint8 </td></tr>
+<tr>
+<td>10 </td><td>bool </td></tr>
+<tr>
+<td>11<sub><a class="el" href="../../dc/da6/x52_value2buttonColor_node.html#col_joy">b</a></sub> </td><td>Joy </td></tr>
+</table>
+<p>b)<a class="anchor" id="col_joy"></a>Requires additional setup information, see following table:</p>
+<table class="doxtable">
+<tr>
+<th>Parameter </th><th>Description</th></tr>
+<tr>
+<td>axis_or_button </td><td>Defines if the value being used comes from an axis(false) or a button(true) </td></tr>
+<tr>
+<td>axis_button </td><td>Defines the axis or button number </td></tr>
+</table>
+<p>The color LED can be selected with the color_led parameter</p>
+<table class="doxtable">
+<tr>
+<th>color_led </th><th>Description</th></tr>
+<tr>
+<td>0 </td><td>LED FIRE </td></tr>
+<tr>
+<td>1 </td><td>LED A </td></tr>
+<tr>
+<td>2 </td><td>LED B </td></tr>
+<tr>
+<td>3 </td><td>LED D </td></tr>
+<tr>
+<td>4 </td><td>LED E </td></tr>
+<tr>
+<td>5 </td><td>LED T1/2 </td></tr>
+<tr>
+<td>6 </td><td>LED T3/4 </td></tr>
+<tr>
+<td>7 </td><td>LED T5/6 </td></tr>
+<tr>
+<td>8 </td><td>LED POV 2 </td></tr>
+<tr>
+<td>9 </td><td>LED I </td></tr>
+</table>
+<p>Colors available:</p>
+<table class="doxtable">
+<tr>
+<th>Color-Char </th><th>Description</th></tr>
+<tr>
+<td>O </td><td>Off </td></tr>
+<tr>
+<td>G </td><td>Green/On <sub><a class="el" href="../../dc/da6/x52_value2buttonColor_node.html#col_on">c</a></sub> </td></tr>
+<tr>
+<td>Y </td><td>Yellow </td></tr>
+<tr>
+<td>R </td><td>Red </td></tr>
+</table>
+<p>c)<a class="anchor" id="col_on"></a>FIRE Button only supports On or Off because the color is controlled by the saftey cover, when closed it is green and when opened red.</p>
+<p>For specifying what color the LED should be at which value the setup_string parameter must be supplied. It uses a special syntax. The first given color is set if the value is lower than any given value, the last one is set when the value is higher than any given value. In between the values are printed when the given value is exceeded.</p>
+<p>Example: </p>
+<pre class="fragment">    R|-4|Y|3|G|6|Y
+
+    \n
+</pre><p>Example Results: </p>
+<table class="doxtable">
+<tr>
+<th>Value </th><th>Result</th></tr>
+<tr>
+<td>-6 </td><td>Red </td></tr>
+<tr>
+<td>-4 </td><td>Red </td></tr>
+<tr>
+<td>3 </td><td>Yellow </td></tr>
+<tr>
+<td>5 </td><td>Green </td></tr>
+<tr>
+<td>7 </td><td>Yellow </td></tr>
+</table>
+<p><br/>
+</p>
+<p>Example Conditions: </p>
+<table class="doxtable">
+<tr>
+<th>String </th><th>Prints when</th></tr>
+<tr>
+<td>Red </td><td>Value &lt;=-4 </td></tr>
+<tr>
+<td>Yellow </td><td>Value &lt;=3 </td></tr>
+<tr>
+<td>Green </td><td>Value &lt;=6 </td></tr>
+<tr>
+<td>Yellow </td><td>Value &gt;6 </td></tr>
+</table>
+<p><br/>
+</p>
+<p>Copy&amp;Paste Launchfile Code: </p>
+<pre class="fragment">    &lt;node pkg="x52_joyext" type="x52_value2buttonColor_node" name="Color_Button_0" output="screen"&gt;
+            &lt;param name="input_type" value="11"/&gt;
+            &lt;param name="joy_axis_button" value="4"/&gt;
+            &lt;param name="joy_axis_or_button" value="false"/&gt;
+            &lt;param name="color_led" value="4" /&gt;
+            &lt;param name="setup_string" value="G|-0.5|Y|0.5|R"/&gt;
+            &lt;remap from="/Color_Button_0/in" to="/joy" /&gt;
+            &lt;remap from="/Color_Button_0/led" to="/x52/leds" /&gt;
+    &lt;/node&gt;
+</pre><p>a)<a class="anchor" id="col_std"></a>Standard value<br/>
+ </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->
 <!-- start footer part -->

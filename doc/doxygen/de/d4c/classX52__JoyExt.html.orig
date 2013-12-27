@@ -121,8 +121,11 @@ $(document).ready(function(){initNavTree('de/d4c/classX52__JoyExt.html','../../'
 Collaboration diagram for X52_JoyExt:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/dfe/classX52__JoyExt__coll__graph.png" border="0" usemap="#X52__JoyExt_coll__map" alt="Collaboration graph"/></div>
+<<<<<<< Updated upstream
+=======
 <map name="X52__JoyExt_coll__map" id="X52__JoyExt_coll__map">
 </map>
+>>>>>>> Stashed changes
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -226,9 +229,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<<<<<<< Updated upstream
+<p>Definition at line <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">22</a> of file <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html">x52_joyext.cpp</a>.</p>
+
+<p>References <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00059">brightnessLED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00058">brightnessMFD</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00183">cb_brighnessLED()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00177">cb_brighnessMFD()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00142">cb_date()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00073">cb_leds()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00094">cb_mfd_text()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00150">cb_time()</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00052">Date</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00050">LED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00036">loop_rate</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00051">mfd_content</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00035">nh</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00055">Offset</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00067">subbrightnessLED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00066">subbrightnessMFD</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00064">subdate</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00062">subleds</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00063">submfd_text</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00065">subtime</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00054">Time</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00047">updateBrightnessLED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00046">updateBrightnessMFD</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00043">updateDate</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00039">updateLED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00040">updateLED_b</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00041">updateMFD</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00045">updateOffset</a>, and <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00044">updateTime</a>.</p>
+=======
 <p>Definition at line <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">32</a> of file <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html">x52_joyext.cpp</a>.</p>
 
 <p>References <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00059">brightnessLED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00058">brightnessMFD</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00193">cb_brighnessLED()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00187">cb_brighnessMFD()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00152">cb_date()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00083">cb_leds()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00104">cb_mfd_text()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00160">cb_time()</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00052">Date</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00050">LED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00036">loop_rate</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00051">mfd_content</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00035">nh</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00055">Offset</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00067">subbrightnessLED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00066">subbrightnessMFD</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00064">subdate</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00062">subleds</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00063">submfd_text</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00065">subtime</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00054">Time</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00047">updateBrightnessLED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00046">updateBrightnessMFD</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00043">updateDate</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00039">updateLED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00040">updateLED_b</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00041">updateMFD</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00045">updateOffset</a>, and <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00044">updateTime</a>.</p>
+>>>>>>> Stashed changes
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -262,7 +271,11 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<<<<<<< Updated upstream
+<p>Definition at line <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00068">68</a> of file <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html">x52_joyext.cpp</a>.</p>
+=======
 <p>Definition at line <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00078">78</a> of file <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html">x52_joyext.cpp</a>.</p>
+>>>>>>> Stashed changes
 
 <p>References <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00036">loop_rate</a>.</p>
 
@@ -291,11 +304,19 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<<<<<<< Updated upstream
+<p>Definition at line <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00183">183</a> of file <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html">x52_joyext.cpp</a>.</p>
+
+<p>References <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00059">brightnessLED</a>, and <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00047">updateBrightnessLED</a>.</p>
+
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Definition at line <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00193">193</a> of file <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html">x52_joyext.cpp</a>.</p>
 
 <p>References <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00059">brightnessLED</a>, and <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00047">updateBrightnessLED</a>.</p>
 
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -330,11 +351,19 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<<<<<<< Updated upstream
+<p>Definition at line <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00177">177</a> of file <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html">x52_joyext.cpp</a>.</p>
+
+<p>References <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00058">brightnessMFD</a>, and <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00046">updateBrightnessMFD</a>.</p>
+
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Definition at line <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00187">187</a> of file <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html">x52_joyext.cpp</a>.</p>
 
 <p>References <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00058">brightnessMFD</a>, and <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00046">updateBrightnessMFD</a>.</p>
 
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -369,11 +398,19 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<<<<<<< Updated upstream
+<p>Definition at line <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00142">142</a> of file <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html">x52_joyext.cpp</a>.</p>
+
+<p>References <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00052">Date</a>, and <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00043">updateDate</a>.</p>
+
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Definition at line <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00152">152</a> of file <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html">x52_joyext.cpp</a>.</p>
 
 <p>References <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00052">Date</a>, and <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00043">updateDate</a>.</p>
 
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -408,11 +445,19 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<<<<<<< Updated upstream
+<p>Definition at line <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00073">73</a> of file <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html">x52_joyext.cpp</a>.</p>
+
+<p>References <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00050">LED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00069">setLEDs()</a>, and <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00039">updateLED</a>.</p>
+
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Definition at line <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00083">83</a> of file <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html">x52_joyext.cpp</a>.</p>
 
 <p>References <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00050">LED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00069">setLEDs()</a>, and <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00039">updateLED</a>.</p>
 
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -456,11 +501,19 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<<<<<<< Updated upstream
+<p>Definition at line <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00094">94</a> of file <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html">x52_joyext.cpp</a>.</p>
+
+<p>References <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00051">mfd_content</a>, and <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00041">updateMFD</a>.</p>
+
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Definition at line <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00104">104</a> of file <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html">x52_joyext.cpp</a>.</p>
 
 <p>References <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00051">mfd_content</a>, and <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00041">updateMFD</a>.</p>
 
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -495,11 +548,19 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<<<<<<< Updated upstream
+<p>Definition at line <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00150">150</a> of file <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html">x52_joyext.cpp</a>.</p>
+
+<p>References <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00055">Offset</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00056">Offset_24</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00057">Offset_Inv</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00054">Time</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00053">Time_24</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00045">updateOffset</a>, and <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00044">updateTime</a>.</p>
+
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Definition at line <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00160">160</a> of file <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html">x52_joyext.cpp</a>.</p>
 
 <p>References <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00055">Offset</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00056">Offset_24</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00057">Offset_Inv</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00054">Time</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00053">Time_24</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00045">updateOffset</a>, and <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00044">updateTime</a>.</p>
 
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -525,11 +586,19 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<<<<<<< Updated upstream
+<p>Definition at line <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">190</a> of file <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html">x52_joyext.cpp</a>.</p>
+
+<p>References <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00059">brightnessLED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00058">brightnessMFD</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00052">Date</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00050">LED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00036">loop_rate</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00051">mfd_content</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00055">Offset</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00056">Offset_24</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00057">Offset_Inv</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00054">Time</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00053">Time_24</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00047">updateBrightnessLED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00046">updateBrightnessMFD</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00043">updateDate</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00039">updateLED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00041">updateMFD</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00045">updateOffset</a>, and <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00044">updateTime</a>.</p>
+
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Definition at line <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">200</a> of file <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html">x52_joyext.cpp</a>.</p>
 
 <p>References <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00059">brightnessLED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00058">brightnessMFD</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00052">Date</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00050">LED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00036">loop_rate</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00051">mfd_content</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00055">Offset</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00056">Offset_24</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00057">Offset_Inv</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00054">Time</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00053">Time_24</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00047">updateBrightnessLED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00046">updateBrightnessMFD</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00043">updateDate</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00039">updateLED</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00041">updateMFD</a>, <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00045">updateOffset</a>, and <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00044">updateTime</a>.</p>
 
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -588,7 +657,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00069">69</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00073">cb_leds()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00083">cb_leds()</a>.</p>
+>>>>>>> Stashed changes
 
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -622,7 +695,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00059">59</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00183">cb_brighnessLED()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00193">cb_brighnessLED()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -646,7 +723,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00058">58</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00177">cb_brighnessMFD()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00187">cb_brighnessMFD()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -670,7 +751,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00052">52</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00142">cb_date()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00152">cb_date()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -694,7 +779,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00050">50</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00073">cb_leds()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00083">cb_leds()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -718,7 +807,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00036">36</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00068">~X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00078">~X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -742,7 +835,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00051">51</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00094">cb_mfd_text()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00104">cb_mfd_text()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -766,7 +863,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00035">35</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -790,7 +891,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00055">55</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00150">cb_time()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00160">cb_time()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -814,7 +919,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00056">56</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00150">cb_time()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00160">cb_time()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -838,7 +947,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00057">57</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00150">cb_time()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00160">cb_time()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -862,7 +975,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00067">67</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -886,7 +1003,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00066">66</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -910,7 +1031,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00064">64</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -934,7 +1059,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00062">62</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -958,7 +1087,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00063">63</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -982,7 +1115,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00065">65</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -1006,7 +1143,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00054">54</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00150">cb_time()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00160">cb_time()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -1030,7 +1171,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00053">53</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00150">cb_time()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00160">cb_time()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -1054,7 +1199,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00047">47</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00183">cb_brighnessLED()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00193">cb_brighnessLED()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -1078,7 +1227,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00046">46</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00177">cb_brighnessMFD()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00187">cb_brighnessMFD()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -1102,7 +1255,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00043">43</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00142">cb_date()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00152">cb_date()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -1126,7 +1283,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00039">39</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00073">cb_leds()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00083">cb_leds()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -1150,7 +1311,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00040">40</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -1174,7 +1339,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00041">41</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00094">cb_mfd_text()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00104">cb_mfd_text()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -1220,7 +1389,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00045">45</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00150">cb_time()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00160">cb_time()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>
@@ -1244,7 +1417,11 @@ Here is the caller graph for this function:</div>
 
 <p>Definition at line <a class="el" href="../../dc/d26/x52__joyext_8h_source.html#l00044">44</a> of file <a class="el" href="../../dc/d26/x52__joyext_8h_source.html">x52_joyext.h</a>.</p>
 
+<<<<<<< Updated upstream
+<p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00150">cb_time()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00190">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00022">X52_JoyExt()</a>.</p>
+=======
 <p>Referenced by <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00160">cb_time()</a>, <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00200">send_to_joystick()</a>, and <a class="el" href="../../de/d32/x52__joyext_8cpp_source.html#l00032">X52_JoyExt()</a>.</p>
+>>>>>>> Stashed changes
 
 </div>
 </div>

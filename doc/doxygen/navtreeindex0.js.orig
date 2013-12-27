@@ -6,6 +6,18 @@ var NAVTREEINDEX0 =
 "d0/d40/classPublishLED_1_1PairSortMod.html#a3f0a085dc4fa0a4d89997776ecab94ae":[5,0,0,0,0],
 "d0/dd5/classPublishMFD_1_1PairSortMod.html":[5,0,1,0],
 "d0/dd5/classPublishMFD_1_1PairSortMod.html#abb706b0da0c2464cb3897fbea0fabd56":[5,0,1,0,0],
+<<<<<<< Updated upstream
+"d3/d14/x52_general.html":[1],
+"d3/d14/x52_general.html#JoyHead":[1,1,0],
+"d3/d14/x52_general.html#JoySide":[1,1,1],
+"d3/d14/x52_general.html#JoyTButton":[1,1,2],
+"d3/d14/x52_general.html#Joystick":[1,1],
+"d3/d14/x52_general.html#Legend":[1,0],
+"d3/d14/x52_general.html#MFD":[1,3],
+"d3/d14/x52_general.html#Throttle":[1,2],
+"d3/d14/x52_general.html#ThrottleSide":[1,2,1],
+"d3/d14/x52_general.html#ThrottleTop":[1,2,0],
+=======
 "d3/d14/x52_general.html":[4],
 "d3/d14/x52_general.html#JoyHead":[4,1,0],
 "d3/d14/x52_general.html#JoySide":[4,1,1],
@@ -16,6 +28,7 @@ var NAVTREEINDEX0 =
 "d3/d14/x52_general.html#Throttle":[4,2],
 "d3/d14/x52_general.html#ThrottleSide":[4,2,1],
 "d3/d14/x52_general.html#ThrottleTop":[4,2,0],
+>>>>>>> Stashed changes
 "d3/dab/x52__joyext__node_8cpp.html":[6,0,1,3],
 "d3/dab/x52__joyext__node_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627":[6,0,1,3,0],
 "d3/dab/x52__joyext__node_8cpp_source.html":[6,0,1,3],
@@ -98,6 +111,15 @@ var NAVTREEINDEX0 =
 "d7/d70/classPublishLED.html#acf578d05af2bba4396081bdd846fa5ed":[5,0,0,14],
 "d7/d70/classPublishLED.html#ae27287389bf60466547a853de939e66f":[5,0,0,10],
 "d7/d70/classPublishLED.html#ae2fdce8400822b3df8f807b14f6dcc01":[5,0,0,6],
+<<<<<<< Updated upstream
+"db/dbc/x52_mfd_writer_node.html":[3],
+"dc/d26/x52__joyext_8h.html":[6,0,0,0],
+"dc/d26/x52__joyext_8h_source.html":[6,0,0,0],
+"dc/da6/x52_value2buttonColor_node.html":[4],
+"de/d32/x52__joyext_8cpp.html":[6,0,1,2],
+"de/d32/x52__joyext_8cpp_source.html":[6,0,1,2],
+"de/d35/x52_joyext_node.html":[2],
+=======
 "db/dbc/x52_mfd_writer_node.html":[1],
 "dc/d26/x52__joyext_8h.html":[6,0,0,0],
 "dc/d26/x52__joyext_8h_source.html":[6,0,0,0],
@@ -105,6 +127,7 @@ var NAVTREEINDEX0 =
 "de/d32/x52__joyext_8cpp.html":[6,0,1,2],
 "de/d32/x52__joyext_8cpp_source.html":[6,0,1,2],
 "de/d35/x52_joyext_node.html":[3],
+>>>>>>> Stashed changes
 "de/d4c/classX52__JoyExt.html":[5,0,2],
 "de/d4c/classX52__JoyExt.html#a01b2dd9c685e60ff9c5818b847a398a9":[5,0,2,0],
 "de/d4c/classX52__JoyExt.html#a11c359e521567017ce1fded1dab60b03":[5,0,2,23],
