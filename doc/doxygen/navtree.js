@@ -2,9 +2,9 @@ var NAVTREE =
 [
   [ "x52_joyext_node", "index.html", [
     [ "About", "index.html#About", null ],
+    [ "x52_joyext_node", "de/d35/x52_joyext_node.html", null ],
     [ "x52_mfd_writer_node", "db/dbc/x52_mfd_writer_node.html", null ],
     [ "x52_value2buttonColor_node", "dc/da6/x52_value2buttonColor_node.html", null ],
-    [ "x52_joyext_node", "de/d35/x52_joyext_node.html", null ],
     [ "X52 Pro General Overview", "d3/d14/x52_general.html", [
       [ "Legend", "d3/d14/x52_general.html#Legend", null ],
       [ "Joystick", "d3/d14/x52_general.html#Joystick", [
@@ -18,6 +18,7 @@ var NAVTREE =
       ] ],
       [ "Multi Function Display", "d3/d14/x52_general.html#MFD", null ]
     ] ],
+    [ "Bug List", "de/da5/bug.html", null ],
     [ "Classes", null, [
       [ "Class List", "annotated.html", "annotated" ],
       [ "Class Index", "classes.html", null ],
