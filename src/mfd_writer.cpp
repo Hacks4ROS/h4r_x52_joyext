@@ -525,7 +525,7 @@ int main(int argc, char **argv)
 #define casem(CASE,TYPE,TYPEROS)\
 	case CASE:\
 	{\
-		PublishObject< TYPE > obj(&n);\
+		PublishMFD< TYPE > obj(&n);\
 		obj.start<std_msgs::TYPEROS, std_msgs:: TYPEROS## ConstPtr>();\
 		break;\
 	}\

@@ -357,7 +357,7 @@ int main(int argc, char **argv)
 #define casem(CASE,TYPE,TYPEROS)\
 	case CASE:\
 	{\
-		PublishObject< TYPE > obj(&n,setup,led,axis_button,axis_or_button);\
+		PublishLED< TYPE > obj(&n,setup,led,axis_button,axis_or_button);\
 		obj.start<std_msgs::TYPEROS, std_msgs:: TYPEROS## ConstPtr>();\
 		break;\
 	}\
