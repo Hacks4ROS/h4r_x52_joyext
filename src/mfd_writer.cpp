@@ -48,7 +48,7 @@ enum
 };
 
 template<typename T>
-class PublishObject
+class PublishMFD
 {
 	enum
 	{
@@ -83,7 +83,7 @@ private:
 	int char_as_int; //! A char is interpreted as integer if this is 1 or as unsigned integer if this is 2 and as char on any other value
 
 public:
-	PublishObject(ros::NodeHandle *n) :
+	PublishMFD(ros::NodeHandle *n) :
 			n(n)
 	{
 		//Get the parameters
@@ -175,7 +175,7 @@ public:
 		}
 		pub.publish(init_msg);
 	}
-	~PublishObject()
+	~PublishMFD()
 	{
 	}
 
@@ -363,7 +363,7 @@ public:
 	template<class MSG, class MSGPTR>
 	void start()
 	{
-		sub = n->subscribe<MSG>("in", 1000, &PublishObject<T>::Callback<MSGPTR>,
+		sub = n->subscribe<MSG>("in", 1000, &PublishMFD<T>::Callback<MSGPTR>,
 				this);
 		ros::spin();
 	}
@@ -371,7 +371,7 @@ public:
 	void startJoy()
 	{
 		sub = n->subscribe<sensor_msgs::Joy>("in", 1000,
-				&PublishObject<T>::JoyCallback, this);
+				&PublishMFD<T>::JoyCallback, this);
 		ros::spin();
 	}
 
@@ -413,7 +413,7 @@ int main(int argc, char **argv)
 	casem(INPUT_BOOL, bool, Bool)
 	case INPUT_JOY:
 	{
-		PublishObject<double> obj(&n);
+		PublishMFD<double> obj(&n);
 		obj.startJoy();
 		break;
 	}

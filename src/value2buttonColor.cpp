@@ -45,7 +45,7 @@ enum
 };
 
 template <typename T>
-class PublishObject
+class PublishLED
 {
 	enum
 	{
@@ -75,7 +75,7 @@ private:
 
 
 public:
-	PublishObject(ros::NodeHandle *n, std::string setup, int led, int axis, bool axis_or_button)
+	PublishLED(ros::NodeHandle *n, std::string setup, int led, int axis, bool axis_or_button)
 	:n(n),
 	 axis_or_button(axis_or_button),
 	 axis_button(axis)
@@ -153,7 +153,7 @@ public:
 		}
 		pub=n->advertise< x52_joyext::x52_led_color >("led",1);
 	}
-	~PublishObject()
+	~PublishLED()
 	{}
 
 	void progressValue(T value)
@@ -207,13 +207,13 @@ public:
 	template <class MSG, class MSGPTR>
 	void start()
 	{
-		sub=n->subscribe<MSG>("in",1000, &PublishObject<T>::Callback< MSGPTR >, this);
+		sub=n->subscribe<MSG>("in",1000, &PublishLED<T>::Callback< MSGPTR >, this);
 		ros::spin();
 	}
 
 	void startJoy()
 	{
-		sub=n->subscribe<sensor_msgs::Joy>("in",1000, &PublishObject<T>::JoyCallback, this);
+		sub=n->subscribe<sensor_msgs::Joy>("in",1000, &PublishLED<T>::JoyCallback, this);
 		ros::spin();
 	}
 
@@ -272,7 +272,7 @@ int main(int argc, char **argv)
 	casem(INPUT_BOOL, bool, Bool)
 		case INPUT_JOY:
 		{
-			PublishObject< double > obj(&n,setup,led,axis_button, axis_or_button);
+			PublishLED< double > obj(&n,setup,led,axis_button, axis_or_button);
 			obj.startJoy();
 			break;
 		}
