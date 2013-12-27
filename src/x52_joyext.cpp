@@ -6,17 +6,16 @@
  * Have Fun! :-)
  */
 
+/*
+ * Modified by Murilo FM (muhrix@gmail.com)
+ * 12 Dec 2013
+ *
+ */
 
-//TODO Change processing from "update" fields to desired value fields
 
+#include "x52_joyext.h"
 
-#include "X52JoyExt.hpp"
-extern "C"
-{
-	#include "x52_pro_lib/x52pro.h"
-}
-X52_JoyExt::X52_JoyExt(ros::NodeHandle &n)
-:nh(n)
+X52_JoyExt::X52_JoyExt(ros::NodeHandle &n):nh(n)
 {
    //bzero(updateLED,10);
    memset(updateLED,1,10);
@@ -40,7 +39,7 @@ X52_JoyExt::X52_JoyExt(ros::NodeHandle &n)
    updateBrightnessLED=true;
    updateBrightnessMFD=true;
 
-   //MDF content write
+   //MFD content write
    mfd_content[0]="x52_joyext Node";
    mfd_content[1]=" Joystick under ";
    mfd_content[2]="   ROS Control  ";
@@ -65,17 +64,18 @@ X52_JoyExt::X52_JoyExt(ros::NodeHandle &n)
 X52_JoyExt::~X52_JoyExt()
 {
 	delete loop_rate;
-	// TODO Auto-generated destructor stub
 }
 
 void X52_JoyExt::cb_leds(const x52_joyext::x52_led_colorConstPtr &msg)
 {
-	if(msg->led_fire)
+	if(msg->color_leds[x52_joyext::x52_led_color::LED_FIRE])
 	{
-		if(msg->led_fire>2)ROS_WARN("FAULTY VALUE (%i) FOR LED FOUND! Value must be in the range of 0-2",msg->led_fire);
-		LED[0]=(msg->led_fire>1);
+		if( msg->color_leds[ x52_joyext::x52_led_color::LED_FIRE ] >2)
+			ROS_WARN("WRONG VALUE (%i) FOR LED FOUND! Value must be in the range of 0-2",msg->color_leds[x52_joyext::x52_led_color::LED_FIRE]);
+		LED[0]=(msg->color_leds[x52_joyext::x52_led_color::LED_FIRE]>1);
 		updateLED[0]=true;
 	}
+	//  void setLEDs(uint8_t inValue, uint8_t *red, uint8_t *green, bool *update)
 	setLEDs(msg->color_leds[x52_joyext::x52_led_color::LED_A]	,&LED[X52PRO_LED_ARED-1] ,&LED[X52PRO_LED_AGREEN-1] ,&updateLED[1]);
 	setLEDs(msg->color_leds[x52_joyext::x52_led_color::LED_B]	,&LED[X52PRO_LED_BRED-1] ,&LED[X52PRO_LED_BGREEN-1] ,&updateLED[2]);
 	setLEDs(msg->color_leds[x52_joyext::x52_led_color::LED_D]	,&LED[X52PRO_LED_DRED-1] ,&LED[X52PRO_LED_DGREEN-1] ,&updateLED[3]);
@@ -189,12 +189,12 @@ void X52_JoyExt::send_to_joystick()
 	struct x52 *hdl=0;
 	while(hdl==0 && ros::ok())
 	{
-		ROS_INFO("Trying to get Joystick...");
-		hdl=::x52_init();
+		ROS_INFO("Trying to find joystick...");
+		hdl=x52_init();
 		loop_rate->sleep();
 	}
-	ROS_INFO("Got Joystick...");
-	::x52_debug(hdl, 1);
+	ROS_INFO("Joystick found...");
+	x52_debug(hdl, 1);
 
 
 	x52_setled(hdl,0,0);

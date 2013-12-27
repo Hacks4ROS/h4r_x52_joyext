@@ -6,6 +6,26 @@
  * Have Fun! :-)
  */
 
+/*
+ * Modified by Murilo FM (muhrix@gmail.com)
+ * 12 Dec 2013
+ *
+ */
+
+/**
+\page x52_joyext_node x52_joyext_node
+
+The x52_joyext_node is responsible for the communication with the joystick extensions.
+It sets the LEDs and the MFD according to the information gathered from the input topics.
+
+You can use the following piece of code for your launchfile to start the node
+
+	<node pkg="x52_joyext" type="x52_joyext_node" name="x52" output="screen" />
+
+	\bug Currently the operation of x52_joyext node can lead to jittering buttons or axis. AFAIK this is the case because
+	because reading and writing to the joystick can occur at the same time when running a joy node and the x52 node
+*/
+
 #include <ros/ros.h>
 
 #include <std_msgs/UInt8.h>
@@ -16,6 +36,11 @@
 #include "x52_joyext/x52_time.h"
 #include "x52_joyext/x52_led_color.h"
 #include "x52_joyext/x52_mfd.h"
+
+extern "C" {
+#include <x52pro.h>
+}
+
 #ifndef X52JOYEXT_HPP_
 #define X52JOYEXT_HPP_
 
@@ -79,7 +104,7 @@ class X52_JoyExt
 			  *green=1;
 		  	  break;
 		  default:
-			  ROS_WARN("FAULTY VALUE (%i) FOR LED FOUND! Value must be in the range of 0-4",inValue);
+			  ROS_WARN("WRONG VALUE (%i) FOR LED FOUND! Value must be in the range of 0-4",inValue);
 			  return;
 			  break;
 		  }

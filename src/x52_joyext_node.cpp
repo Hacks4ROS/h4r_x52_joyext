@@ -5,8 +5,15 @@
  *
  * Have Fun! :-)
  */
+
+/*
+ * Modified by Murilo FM (muhrix@gmail.com)
+ * 12 Dec 2013
+ *
+ */
+
 #include <ros/ros.h>
-#include "X52JoyExt.hpp"
+#include "x52_joyext.h"
 
 int main(int argc, char **argv)
 {

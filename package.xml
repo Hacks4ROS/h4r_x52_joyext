@@ -1,13 +1,20 @@
 <?xml version="1.0"?>
 <package>
   <name>x52_joyext</name>
-  <version>1.0.0</version>
-  <description>The x52_joyext is used for controlling the MFD on the Saitek X52 Pro Joystick. It supports controlling the button led color, setting MFD text, time and brightness.</description>
-  <maintainer email="cyborg-x1@gmail.com">Christian Holl</maintainer>
-  <license>LGPLv2.1</license>
+  <version>1.0.1</version>
+  <description>The x52_joyext is used for controlling the MFD on the Saitek X52 Pro Joystick. Modified from original x52_joyext by Christian Holl</description>
+  <maintainer email="muhrix@gmail.com">Murilo F. M.</maintainer>
+  <author email="cyborg-x1@gmail.com">Christian Holl</author>
+  <license>BSD</license>
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>message_generation</build_depend>
+  <build_depend>libx52pro-dev</build_depend>
   <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>message_runtime</run_depend>
+  <run_depend>libx52pro-dev</run_depend>
   <export>
   </export>
 </package>
