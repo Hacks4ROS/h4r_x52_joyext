@@ -46,7 +46,7 @@ class X52_JoyExt
 	  ros::NodeHandle &nh;
 	  ros::Rate *loop_rate;
 
-
+	  bool first;
 	  bool updateLED[10];
 	  bool updateLED_b;
 	  bool updateMFD[3];

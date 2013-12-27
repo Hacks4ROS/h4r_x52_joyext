@@ -17,6 +17,8 @@
 
 X52_JoyExt::X52_JoyExt(ros::NodeHandle &n):nh(n)
 {
+
+   first=true;
    //bzero(updateLED,10);
    memset(updateLED,1,10);
    updateLED_b=false;
@@ -43,7 +45,6 @@ X52_JoyExt::X52_JoyExt(ros::NodeHandle &n):nh(n)
    mfd_content[0]="x52_joyext Node";
    mfd_content[1]=" Joystick under ";
    mfd_content[2]="   ROS Control  ";
-
 
    int rate;
    n.param("loop_rate", rate, 100);
@@ -91,8 +92,9 @@ void  X52_JoyExt::cb_mfd_text(const x52_joyext::x52_mfdConstPtr &msg)
 {
 	int curPos=msg->pos+16*msg->line;
 
-	if(msg->clearDisplay)
+	if(msg->clearDisplay || first)
 	{
+		first=false;
 		mfd_content[0]="                ";
 		mfd_content[1]="                ";
 		mfd_content[2]="                ";
