@@ -21,9 +21,6 @@ It sets the LEDs and the MFD according to the information gathered from the inpu
 You can use the following piece of code for your launchfile to start the node
 
 	<node pkg="x52_joyext" type="x52_joyext_node" name="x52" output="screen" />
-
-	\bug Currently the operation of x52_joyext node can lead to jittering buttons or axis. AFAIK this is the case because
-	because reading and writing to the joystick can occur at the same time when running a joy node and the x52 node
 */
 
 #include <ros/ros.h>
