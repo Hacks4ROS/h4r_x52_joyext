@@ -18,7 +18,10 @@ var NAVTREE =
       ] ],
       [ "Multi Function Display", "d3/d14/x52_general.html#MFD", null ]
     ] ],
+<<<<<<< Updated upstream
     [ "Bug List", "de/da5/bug.html", null ],
+=======
+>>>>>>> Stashed changes
     [ "Classes", null, [
       [ "Class List", "annotated.html", "annotated" ],
       [ "Class Index", "classes.html", null ],

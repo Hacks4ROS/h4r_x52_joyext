@@ -293,6 +293,7 @@ $(document).ready(function(){initNavTree('de/d32/x52__joyext_8cpp_source.html','
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;}</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
+<<<<<<< Updated upstream
 <div class="line"><a name="l00186"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#af2f31892711304b018c2af7efeeff386">  186</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#af2f31892711304b018c2af7efeeff386">X52_JoyExt::send_to_joystick</a>()</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;{</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="comment">/*Get Joystick */</span></div>
@@ -391,6 +392,108 @@ $(document).ready(function(){initNavTree('de/d32/x52__joyext_8cpp_source.html','
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                <a class="code" href="../../de/d4c/classX52__JoyExt.html#a7329ef37a98f4a2de1f4bd1c1e4fd8b0">loop_rate</a>-&gt;sleep();</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        }</div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;}</div>
+=======
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="code" href="../../de/d32/x52__joyext_8cpp.html#a623e683b819064014d95986410418522">  186</a></span>&#160;<span class="preprocessor">#define SLEEP_AFTER_COMMAND usleep(5000)</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00188"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#af2f31892711304b018c2af7efeeff386">  188</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#af2f31892711304b018c2af7efeeff386">X52_JoyExt::send_to_joystick</a>()</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;{</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="comment">/*Get Joystick */</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keyword">struct </span>x52 *hdl=0;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="keywordflow">while</span>(hdl==0 &amp;&amp; ros::ok())</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                ROS_INFO(<span class="stringliteral">&quot;Trying to find joystick...&quot;</span>);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                hdl=x52_init();</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <a class="code" href="../../de/d4c/classX52__JoyExt.html#a7329ef37a98f4a2de1f4bd1c1e4fd8b0">loop_rate</a>-&gt;sleep();</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        ROS_INFO(<span class="stringliteral">&quot;Joystick found...&quot;</span>);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        x52_debug(hdl, 1);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        x52_setled(hdl,0,0);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keywordflow">while</span>(ros::ok())</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                <span class="comment">//Update Joystick LED</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> lednum = 0; lednum &lt; 10; ++lednum)</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                        {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                                <span class="keywordflow">if</span>(<a class="code" href="../../de/d4c/classX52__JoyExt.html#ad3cc456d18d1ca89e16d1a70ce9c1147">updateLED</a>[lednum])</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                                {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                                        ROS_DEBUG(<span class="stringliteral">&quot;Setting LED: %i&quot;</span>,lednum);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                                        <span class="keywordflow">if</span>(lednum != 0)</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                                        {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                                                <span class="keywordtype">int</span> led=(lednum)*2;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                                                x52_setled(hdl,led,<a class="code" href="../../de/d4c/classX52__JoyExt.html#ab57aab2a7482ed258164607f7a84bae4">LED</a>[led-1]);</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                                                x52_setled(hdl,led+1,<a class="code" href="../../de/d4c/classX52__JoyExt.html#ab57aab2a7482ed258164607f7a84bae4">LED</a>[led]);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                                        }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                                        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                                        {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                                                x52_setled(hdl,1,<a class="code" href="../../de/d4c/classX52__JoyExt.html#ab57aab2a7482ed258164607f7a84bae4">LED</a>[0]);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                                        }</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                                        <a class="code" href="../../de/d4c/classX52__JoyExt.html#ad3cc456d18d1ca89e16d1a70ce9c1147">updateLED</a>[lednum]=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                                        usleep(50);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                                }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                        }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                <span class="comment">//Update Brightness MFD</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                        <span class="keywordflow">if</span>(<a class="code" href="../../de/d4c/classX52__JoyExt.html#a4696bb7334fff07fdb44eee5141a1963">updateBrightnessMFD</a>)</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                        {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                                x52_setbri(hdl,1,<a class="code" href="../../de/d4c/classX52__JoyExt.html#a9dab5dbb9fb443536966db16c4a98553">brightnessMFD</a>);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                                <a class="code" href="../../de/d4c/classX52__JoyExt.html#a4696bb7334fff07fdb44eee5141a1963">updateBrightnessMFD</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                                usleep(50);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                        }</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                <span class="comment">//Update Brightness LED</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                        <span class="keywordflow">if</span>(<a class="code" href="../../de/d4c/classX52__JoyExt.html#a3e88eef4478933f279240997431d0de9">updateBrightnessLED</a>)</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                        {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                                x52_setbri(hdl,0,<a class="code" href="../../de/d4c/classX52__JoyExt.html#a89b447f1721369de242e961eddfe95ed">brightnessLED</a>);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                                <a class="code" href="../../de/d4c/classX52__JoyExt.html#a3e88eef4478933f279240997431d0de9">updateBrightnessLED</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                                <a class="code" href="../../de/d32/x52__joyext_8cpp.html#a623e683b819064014d95986410418522">SLEEP_AFTER_COMMAND</a>;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                        }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                <span class="comment">//Update MFD Text</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> line = 0; line &lt; 3; ++line)</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                        {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                                <span class="keywordflow">if</span>(<a class="code" href="../../de/d4c/classX52__JoyExt.html#a6c81eddbf187df27b8f7f0c2e73ccaa4">updateMFD</a>[line])</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                                {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                                        x52_settext(hdl,line,(<span class="keywordtype">char</span>*)<a class="code" href="../../de/d4c/classX52__JoyExt.html#ab8ac9b9e9ba9de502f05c62f7d105919">mfd_content</a>[line].c_str(),<a class="code" href="../../de/d4c/classX52__JoyExt.html#ab8ac9b9e9ba9de502f05c62f7d105919">mfd_content</a>[line].length());</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                                        <a class="code" href="../../de/d4c/classX52__JoyExt.html#a6c81eddbf187df27b8f7f0c2e73ccaa4">updateMFD</a>[line]=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                                }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                                <a class="code" href="../../de/d32/x52__joyext_8cpp.html#a623e683b819064014d95986410418522">SLEEP_AFTER_COMMAND</a>;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                        }</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                <span class="comment">//Update Date</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                        <span class="keywordflow">if</span>(<a class="code" href="../../de/d4c/classX52__JoyExt.html#aea01226a88525f15b3d0d0f1ef5d4034">updateDate</a>)</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                        {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                                x52_setdate(hdl,<a class="code" href="../../de/d4c/classX52__JoyExt.html#a20e444d761ee18129e142ac029ecd763">Date</a>[0],<a class="code" href="../../de/d4c/classX52__JoyExt.html#a20e444d761ee18129e142ac029ecd763">Date</a>[1],<a class="code" href="../../de/d4c/classX52__JoyExt.html#a20e444d761ee18129e142ac029ecd763">Date</a>[2]);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                                <a class="code" href="../../de/d4c/classX52__JoyExt.html#aea01226a88525f15b3d0d0f1ef5d4034">updateDate</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                                <a class="code" href="../../de/d32/x52__joyext_8cpp.html#a623e683b819064014d95986410418522">SLEEP_AFTER_COMMAND</a>;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                        }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                <span class="comment">//Update  Time</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                        <span class="keywordflow">if</span>(<a class="code" href="../../de/d4c/classX52__JoyExt.html#a8a2cb96cd92e1ff5b1a9b4ea0b6885d7">updateTime</a>)</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                        {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                                x52_settime(hdl,<a class="code" href="../../de/d4c/classX52__JoyExt.html#aeb8a3901be7706513b72f2ef90be7ddb">Time_24</a>,<a class="code" href="../../de/d4c/classX52__JoyExt.html#a903bbb17e361e8dabc49900a6e9f5f5a">Time</a>[0], <a class="code" href="../../de/d4c/classX52__JoyExt.html#a903bbb17e361e8dabc49900a6e9f5f5a">Time</a>[1]);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                                <a class="code" href="../../de/d4c/classX52__JoyExt.html#a8a2cb96cd92e1ff5b1a9b4ea0b6885d7">updateTime</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                                <a class="code" href="../../de/d32/x52__joyext_8cpp.html#a623e683b819064014d95986410418522">SLEEP_AFTER_COMMAND</a>;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                        }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                <span class="comment">//Offset  Time</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> o = 0; o &lt; 2; ++ o)</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                        {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                                <span class="keywordflow">if</span>(<a class="code" href="../../de/d4c/classX52__JoyExt.html#aabc84b876d17a11965d8a8de654626ec">updateOffset</a>[o])</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                                        x52_setoffs(hdl,o,<a class="code" href="../../de/d4c/classX52__JoyExt.html#ac7a8055f243fee0005eff44480d9ff0e">Offset_24</a>[o],<a class="code" href="../../de/d4c/classX52__JoyExt.html#a9862924056c7d056307b5d130cd77106">Offset_Inv</a>[o],<a class="code" href="../../de/d4c/classX52__JoyExt.html#a97d9f561c7121633a92a8654f8705f1d">Offset</a>[o]);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                                        <a class="code" href="../../de/d4c/classX52__JoyExt.html#aabc84b876d17a11965d8a8de654626ec">updateOffset</a>[o]=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                                }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                                <a class="code" href="../../de/d32/x52__joyext_8cpp.html#a623e683b819064014d95986410418522">SLEEP_AFTER_COMMAND</a>;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                        }</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                ros::spinOnce();</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                <a class="code" href="../../de/d4c/classX52__JoyExt.html#a7329ef37a98f4a2de1f4bd1c1e4fd8b0">loop_rate</a>-&gt;sleep();</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        }</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;}</div>
+>>>>>>> Stashed changes
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->

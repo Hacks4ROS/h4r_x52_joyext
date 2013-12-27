@@ -122,6 +122,7 @@ $(document).ready(function(){initNavTree('dc/d26/x52__joyext_8h_source.html','..
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<<<<<<< Updated upstream
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;ros/ros.h&gt;</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;std_msgs/UInt8.h&gt;</span></div>
@@ -223,6 +224,109 @@ $(document).ready(function(){initNavTree('dc/d26/x52__joyext_8h_source.html','..
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;};</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* X52JOYEXT_HPP_ */</span><span class="preprocessor"></span></div>
+=======
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;ros/ros.h&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;std_msgs/UInt8.h&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;boost/thread/mutex.hpp&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;inttypes.h&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;x52_joyext/x52_date.h&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;x52_joyext/x52_time.h&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;x52_joyext/x52_led_color.h&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;x52_joyext/x52_mfd.h&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;x52pro.h&gt;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#ifndef X52JOYEXT_HPP_</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define X52JOYEXT_HPP_</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html">   44</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../de/d4c/classX52__JoyExt.html">X52_JoyExt</a></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a4e95e0bf71d55f79548cdff1a330d87b">   46</a></span>&#160;          ros::NodeHandle &amp;<a class="code" href="../../de/d4c/classX52__JoyExt.html#a4e95e0bf71d55f79548cdff1a330d87b">nh</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a7329ef37a98f4a2de1f4bd1c1e4fd8b0">   47</a></span>&#160;          ros::Rate *<a class="code" href="../../de/d4c/classX52__JoyExt.html#a7329ef37a98f4a2de1f4bd1c1e4fd8b0">loop_rate</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#ad3cc456d18d1ca89e16d1a70ce9c1147">   50</a></span>&#160;          <span class="keywordtype">bool</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#ad3cc456d18d1ca89e16d1a70ce9c1147">updateLED</a>[10];</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a8c71d375e6915c2939be51ba9940d9d5">   51</a></span>&#160;          <span class="keywordtype">bool</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#a8c71d375e6915c2939be51ba9940d9d5">updateLED_b</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a6c81eddbf187df27b8f7f0c2e73ccaa4">   52</a></span>&#160;          <span class="keywordtype">bool</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#a6c81eddbf187df27b8f7f0c2e73ccaa4">updateMFD</a>[3];</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#adf8c31387aa65eb3fceb151aadbc1fa2">   53</a></span>&#160;          <span class="keywordtype">bool</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#adf8c31387aa65eb3fceb151aadbc1fa2">updateMFD_b</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#aea01226a88525f15b3d0d0f1ef5d4034">   54</a></span>&#160;          <span class="keywordtype">bool</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#aea01226a88525f15b3d0d0f1ef5d4034">updateDate</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a8a2cb96cd92e1ff5b1a9b4ea0b6885d7">   55</a></span>&#160;          <span class="keywordtype">bool</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#a8a2cb96cd92e1ff5b1a9b4ea0b6885d7">updateTime</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#aabc84b876d17a11965d8a8de654626ec">   56</a></span>&#160;          <span class="keywordtype">bool</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#aabc84b876d17a11965d8a8de654626ec">updateOffset</a>[2];</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a4696bb7334fff07fdb44eee5141a1963">   57</a></span>&#160;          <span class="keywordtype">bool</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#a4696bb7334fff07fdb44eee5141a1963">updateBrightnessMFD</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a3e88eef4478933f279240997431d0de9">   58</a></span>&#160;          <span class="keywordtype">bool</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#a3e88eef4478933f279240997431d0de9">updateBrightnessLED</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#ab57aab2a7482ed258164607f7a84bae4">   61</a></span>&#160;          uint8_t <a class="code" href="../../de/d4c/classX52__JoyExt.html#ab57aab2a7482ed258164607f7a84bae4">LED</a>[19];</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#ab8ac9b9e9ba9de502f05c62f7d105919">   62</a></span>&#160;          std::string <a class="code" href="../../de/d4c/classX52__JoyExt.html#ab8ac9b9e9ba9de502f05c62f7d105919">mfd_content</a>[3];</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a20e444d761ee18129e142ac029ecd763">   63</a></span>&#160;          uint8_t <a class="code" href="../../de/d4c/classX52__JoyExt.html#a20e444d761ee18129e142ac029ecd763">Date</a>[3];</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#aeb8a3901be7706513b72f2ef90be7ddb">   64</a></span>&#160;          uint8_t <a class="code" href="../../de/d4c/classX52__JoyExt.html#aeb8a3901be7706513b72f2ef90be7ddb">Time_24</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a903bbb17e361e8dabc49900a6e9f5f5a">   65</a></span>&#160;          uint8_t <a class="code" href="../../de/d4c/classX52__JoyExt.html#a903bbb17e361e8dabc49900a6e9f5f5a">Time</a>[2];</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a97d9f561c7121633a92a8654f8705f1d">   66</a></span>&#160;          uint8_t <a class="code" href="../../de/d4c/classX52__JoyExt.html#a97d9f561c7121633a92a8654f8705f1d">Offset</a>[2];</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#ac7a8055f243fee0005eff44480d9ff0e">   67</a></span>&#160;          uint8_t <a class="code" href="../../de/d4c/classX52__JoyExt.html#ac7a8055f243fee0005eff44480d9ff0e">Offset_24</a>[2];</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a9862924056c7d056307b5d130cd77106">   68</a></span>&#160;          uint8_t <a class="code" href="../../de/d4c/classX52__JoyExt.html#a9862924056c7d056307b5d130cd77106">Offset_Inv</a>[2];</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a9dab5dbb9fb443536966db16c4a98553">   69</a></span>&#160;          uint8_t <a class="code" href="../../de/d4c/classX52__JoyExt.html#a9dab5dbb9fb443536966db16c4a98553">brightnessMFD</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a89b447f1721369de242e961eddfe95ed">   70</a></span>&#160;          uint8_t <a class="code" href="../../de/d4c/classX52__JoyExt.html#a89b447f1721369de242e961eddfe95ed">brightnessLED</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a11c359e521567017ce1fded1dab60b03">   73</a></span>&#160;          ros::Subscriber <a class="code" href="../../de/d4c/classX52__JoyExt.html#a11c359e521567017ce1fded1dab60b03">subleds</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a2b29460d9fbd563a7a878fe28b72c2c5">   74</a></span>&#160;          ros::Subscriber <a class="code" href="../../de/d4c/classX52__JoyExt.html#a2b29460d9fbd563a7a878fe28b72c2c5">submfd_text</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a8b48dbf74febe7595b590dc011970a4e">   75</a></span>&#160;          ros::Subscriber <a class="code" href="../../de/d4c/classX52__JoyExt.html#a8b48dbf74febe7595b590dc011970a4e">subdate</a>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a445ab8c08fc189570a48557e333dbc9b">   76</a></span>&#160;          ros::Subscriber <a class="code" href="../../de/d4c/classX52__JoyExt.html#a445ab8c08fc189570a48557e333dbc9b">subtime</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a74385a0db608949bc37dbf28b09cedb5">   77</a></span>&#160;          ros::Subscriber <a class="code" href="../../de/d4c/classX52__JoyExt.html#a74385a0db608949bc37dbf28b09cedb5">subbrightnessMFD</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#a7f64d4a8bf6982c46a1ff991283233b3">   78</a></span>&#160;          ros::Subscriber <a class="code" href="../../de/d4c/classX52__JoyExt.html#a7f64d4a8bf6982c46a1ff991283233b3">subbrightnessLED</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="../../de/d4c/classX52__JoyExt.html#ae1cc7ac33b2ae5e19ef48c045a1006d4">   80</a></span>&#160;          <span class="keywordtype">void</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#ae1cc7ac33b2ae5e19ef48c045a1006d4">setLEDs</a>(uint8_t inValue, uint8_t *red, uint8_t *green, <span class="keywordtype">bool</span> *update)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;          {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                  <span class="keywordflow">switch</span>(inValue)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                  {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                  <span class="keywordflow">case</span> x52_joyext::x52_led_color::NO_STATUS_CHANGE:</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                          *update=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                          <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                  <span class="keywordflow">case</span> x52_joyext::x52_led_color::OFF:</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                          *red=0;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                          *green=0;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                          <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                  <span class="keywordflow">case</span> x52_joyext::x52_led_color::RED:</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                          *red=1;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                          *green=0;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                          <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                  <span class="keywordflow">case</span> x52_joyext::x52_led_color::GREEN:</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                          *red=0;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                          *green=1;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                          <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                  <span class="keywordflow">case</span> x52_joyext::x52_led_color::YELLOW:</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                          *red=1;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                          *green=1;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                          <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                  <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                          ROS_WARN(<span class="stringliteral">&quot;WRONG VALUE (%i) FOR LED FOUND! Value must be in the range of 0-4&quot;</span>,inValue);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                          <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                          <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                  }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                  *update=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;          }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#a648667738a6c80d41b04b4909d154e70">cb_leds</a>(<span class="keyword">const</span> x52_joyext::x52_led_colorConstPtr &amp;msg);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#a76badd91d5d258c5a315075d42843aba">cb_mfd_text</a>(<span class="keyword">const</span> x52_joyext::x52_mfdConstPtr &amp;msg);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#a3afc24a5975ee60f78c366d1d6e58e06">cb_date</a>(<span class="keyword">const</span> x52_joyext::x52_dateConstPtr &amp;msg);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#a53a579de5f9f8c69df53277242750527">cb_time</a>(<span class="keyword">const</span> x52_joyext::x52_timeConstPtr &amp;msg);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#aa6f632a273dfd8463d4757535ade56d0">cb_brighnessMFD</a>(<span class="keyword">const</span> std_msgs::UInt8ConstPtr &amp;msg);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#ac552316ec96742bd9f729e1eb011b317">cb_brighnessLED</a>(<span class="keyword">const</span> std_msgs::UInt8ConstPtr &amp;msg);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <a class="code" href="../../de/d4c/classX52__JoyExt.html#a01b2dd9c685e60ff9c5818b847a398a9">X52_JoyExt</a>(ros::NodeHandle &amp;n);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#a77f2a20d84f12dd2b149fd18f9cf3426">~X52_JoyExt</a>();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../de/d4c/classX52__JoyExt.html#af2f31892711304b018c2af7efeeff386">send_to_joystick</a>();</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;};</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* X52JOYEXT_HPP_ */</span><span class="preprocessor"></span></div>
+>>>>>>> Stashed changes
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.3.1-->
