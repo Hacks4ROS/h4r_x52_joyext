@@ -13,20 +13,6 @@
  */
 
 
-//TODO Change processing from "update" fields to desired value fields
-
-/**
-\page x52_joyext_node x52_joyext_node
-
-The x52_joyext_node is responsible for the communication with the joystick extensions.
-It sets the LEDs and the MFD according to the information gathered from the input topics.
-
-You can use the following piece of code for your launchfile to start the node
-
-	<node pkg="x52_joyext" type="x52_joyext_node" name="x52" output="screen" />
-*/
-
-//#include <x52pro.h>
 #include "x52_joyext.h"
 
 X52_JoyExt::X52_JoyExt(ros::NodeHandle &n):nh(n)
