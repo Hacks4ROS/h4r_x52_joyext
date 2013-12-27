@@ -6,6 +6,140 @@
  * Have Fun! :-)
  */
 
+/**
+\page x52_mfd_writer_node x52_mfd_writer_node
+Printing values from std_msgs topics to the displays can be easily done with the x52_mfd_writer_node.
+
+For each topic which you want to see information on the display you need a mfd_writer node.
+
+All supported message types can be seen in the following table, in a launch file, they are specified
+by the parameter "input_type"
+
+input_type | Description
+-----------| ------------
+0<sub>\ref mfd_std "a" </sub>  | float64
+1          | float32
+2		   | int64
+3          | int32
+4          | int16
+5<sub>\ref mfd_chr "b" </sub>       | int8
+6          | uint64
+7          | uint32
+8          | uint16
+9<sub>\ref mfd_chr "b"</sub>       | uint8
+10         | bool
+11<sub>\ref mfd_joy "c"</sub>        | Joy
+
+
+
+b) \anchor mfd_chr When using a one byte value (mainly known as char in C/C++), it is normally treated as character.\n
+If the number value is wanted instead you have to set the value "char_as_int" to true.
+
+c) \anchor mfd_joy Requires additional setup information, see following table:
+
+Parameter      | Description
+---------------|----------
+axis_or_button | Defines if the value being used comes from an axis(false) or a button(true)
+axis_button    | Defines the axis or button number
+
+
+To specify the arangement in the display the following parameters are used.
+
+Parameter   | Description
+------------|------------
+line        | Defines the line, where the field should be placed
+pos         | Defines the start of the field inside the line
+field_length| Defines the length of the field
+
+To specify what happens to the value alignment when the size of it is smaller the field length,
+the parameter align is used.
+
+Align  | Description
+-------|------------
+0<sub>\ref mfd_std "a" </sub> | Left  - The field is filled with spaces from the right side, so that the value is on the left
+1      | Center - The field is filled with spaces from both sides
+2      | Right - The field is filled with spaces from the left side, so that the value is on the right
+
+
+
+If the integer part of any value exceeds the field size, the user should be notified somehow, that
+there is a problem. This is done by specifiying the oversize parameters:
+
+Parameter        | Description
+-----------------|------------
+positive_oversize| String shown when value is positiv and it's integer value does not fit into the field
+negative_oversize| String shown when value is negative and it's integer value does not fit into the field
+
+At least there is the option to print strings instead of values, this uses the same specification method
+as known from the value2buttonColor node.
+
+Parameter         | Description
+------------------|-------------
+strintprint       | if true the stringprint_setup variable specifies the ranges in which a string is printed
+stringprint_setup | Specification when to write which string, see following paragraph
+
+
+
+The first given string is printed if the value is lower than any given value,
+the last one is printed when the value is higher than any given value.
+
+In between the values are printed when the given value is exceeded.
+
+Example:
+
+	Low|-4|One|3|Two|6|High
+
+\n
+
+Example Results:
+Value | Result
+------|-------
+-6	  | Low
+-4 	  | Low
+ 3    | One
+ 5    | Two
+ 7    | High
+
+\n
+
+Example Conditions:
+String  | Prints when
+------- | ------------
+Low		| Value <=-4
+One		| Value <=3
+Two		| Value <=6
+High	| Value >6
+
+\n
+
+Copy\&Paste Launchfile Code:
+
+	<node pkg="x52_joyext" type="x52_mfd_writer_node" name="x52_mfd_writer_string" output="screen">
+		<param name="input_type" value="11"/>
+		<param name="line" value="1"/>
+		<param name="pos" value="0"/>
+		<param name="field_length" value="16"/>
+		<param name="align" value="1"/>
+		<param name="positive_oversize" value="++EE++"/>
+		<param name="negative_oversize" value="--EE--"/>
+		<param name="axis_or_button" value="false"/>
+		<param name="axis_button" value="4"/>
+		<param name="stringprint" value="true"/>
+		<param name="stringprint_setup" value="Green|-0.5|Yellow|0.5|Red"/>
+		<param name="char_as_int" value="0"/>
+
+		<!-- Remap Topics -->
+		<remap from="~/in" to="/joy" />
+		<remap from="~/mfd_text" to="/x52/mfd_text" />
+	</node>
+
+
+a) \anchor mfd_std Standard value\n
+*/
+
+
+
+
 #include <ros/ros.h>
 #include <string>
 #include <vector>
@@ -18,9 +152,14 @@
 #include <std_msgs/Int8.h>
 #include <std_msgs/Int16.h>
 #include <std_msgs/Int32.h>
+#include <std_msgs/Int64.h>
 #include <std_msgs/UInt8.h>
 #include <std_msgs/UInt16.h>
 #include <std_msgs/UInt32.h>
+#include <std_msgs/UInt64.h>
+
+
+
 #include <std_msgs/Bool.h>
 #include <boost/algorithm/string.hpp>
 #include <sensor_msgs/Joy.h>
@@ -33,15 +172,17 @@ enum
 	INPUT_INT8,
 	INPUT_INT16,
 	INPUT_INT32,
+	INPUT_INT64,
 	INPUT_UINT8,
 	INPUT_UINT16,
 	INPUT_UINT32,
+	INPUT_UINT64,
 	INPUT_BOOL,
 	INPUT_JOY,
 };
 
 template<typename T>
-class PublishObject
+class PublishMFD
 {
 	enum
 	{
@@ -76,7 +217,7 @@ private:
 	int char_as_int; //! A char is interpreted as integer if this is 1 or as unsigned integer if this is 2 and as char on any other value
 
 public:
-	PublishObject(ros::NodeHandle *n) :
+	PublishMFD(ros::NodeHandle *n) :
 			n(n)
 	{
 		//Get the parameters
@@ -168,7 +309,7 @@ public:
 		}
 		pub.publish(init_msg);
 	}
-	~PublishObject()
+	~PublishMFD()
 	{
 	}
 
@@ -356,7 +497,7 @@ public:
 	template<class MSG, class MSGPTR>
 	void start()
 	{
-		sub = n->subscribe<MSG>("in", 1000, &PublishObject<T>::Callback<MSGPTR>,
+		sub = n->subscribe<MSG>("in", 1000, &PublishMFD<T>::Callback<MSGPTR>,
 				this);
 		ros::spin();
 	}
@@ -364,7 +505,7 @@ public:
 	void startJoy()
 	{
 		sub = n->subscribe<sensor_msgs::Joy>("in", 1000,
-				&PublishObject<T>::JoyCallback, this);
+				&PublishMFD<T>::JoyCallback, this);
 		ros::spin();
 	}
 
@@ -393,18 +534,20 @@ int main(int argc, char **argv)
 	n.param<int>("input_type", type, INPUT_FLOAT64);
 	switch (type)
 	{
-	casem(INPUT_FLOAT64, double, Float64)
-	casem(INPUT_FLOAT32, float, Float32)
+	casem(INPUT_FLOAT64, double_t, Float64)
+	casem(INPUT_FLOAT32, float_t, Float32)
+	casem(INPUT_INT64, int64_t, Int64)
 	casem(INPUT_INT32, int32_t, Int32)
 	casem(INPUT_INT16, int16_t, Int16)
 	casem(INPUT_INT8, int8_t, Int8)
+	casem(INPUT_UINT64, uint64_t, UInt64)
 	casem(INPUT_UINT32, uint32_t, UInt32)
 	casem(INPUT_UINT16, uint16_t, UInt16)
 	casem(INPUT_UINT8, uint8_t, UInt8)
 	casem(INPUT_BOOL, bool, Bool)
 	case INPUT_JOY:
 	{
-		PublishObject<double> obj(&n);
+		PublishMFD<double> obj(&n);
 		obj.startJoy();
 		break;
 	}

@@ -1,6 +1,6 @@
 <launch>
 	<node pkg="x52_joyext" type="x52_mfd_writer_node" name="x52_mfd_writer_string" output="screen"> 
-			<param name="input_type" value="9"/>
+			<param name="input_type" value="11"/>
 			<param name="line" value="1"/>
 			<param name="pos" value="0"/>
 			<param name="field_length" value="16"/>
@@ -18,4 +18,3 @@
 			<remap from="~/mfd_text" to="/x52/mfd_text" />
 	</node>
 </launch>
-
