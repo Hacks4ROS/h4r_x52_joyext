@@ -1,6 +1,6 @@
 *
 !.gitignore
 !/doc/
-!/doc/doxygen/
+!/doc/doxygen
 !/doc/doxygen/*
 !index.html
