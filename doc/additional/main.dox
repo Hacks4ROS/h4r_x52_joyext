@@ -159,7 +159,123 @@ Character Display     | Has 3 lines with 16 chars each
 Mode Switch Status    | Shows the current state of mode selector (button 27-29)
 
 \page x52_joyext_node
-\page x52_mfd_writer_node         
+
+The x52_joyext_node is responsible for the communication with the joystick extensions.
+It sets the LEDs and the MFD according to the information gathered from the input topics.
+
+You can use the following piece of code for your launchfile to start the node
+
+	<node pkg="x52_joyext" type="x52_joyext_node" name="x52" output="screen" />
+
+
+
+\page x52_mfd_writer_node
+Printing values from std_msgs topics to the displays can be easily done with the x52_mfd_writer_node.
+
+For each topic which you want to see information on the display you need a mfd_writer node.
+
+All supported message types can be seen in the following table, in a launch file, they are specified
+by the parameter "input_type"
+
+input_type | Description
+-----------| ------------
+0*         | float64
+1          | float32
+2		   | int64
+3          | int32
+4          | int16
+5***       | int8
+6          | uint64
+7          | uint32
+8          | uint16
+9***       | uint8
+10         | bool
+11**       | Joy
+
+*Standard value\n
+**Requires additional setup information, see following table:
+
+Parameter      | Description
+---------------|----------
+axis_or_button | Defines if the value being used comes from an axis(false) or a button(true) 
+axis_button    | Defines the axis or button number
+
+***When using a one byte value (mainly known as char in C/C++), it is normally treated as character.\n
+If the number value is wanted instead you have to set the value "char_as_int" to true. 
+
+
+
+To specify the arangement in the display the following parameters are used.
+
+Parameter   | Description
+------------|------------
+line        | Defines the line, where the field should be placed
+pos         | Defines the start of the field inside the line
+field_length| Defines the length of the field
+
+To specify what happens to the value alignment when the size of it is smaller the field length,
+the parameter align is used.
+
+Align  | Description
+-------|------------
+0*	   | Left  - The field is filled with spaces from the right side, so that the value is on the left
+1      | Center - The field is filled with spaces from both sides
+2      | Right - The field is filled with spaces from the left side, so that the value is on the right
+*Standard value
+
+
+If the integer part of any value exceeds the field size, the user should be notified somehow, that
+there is a problem. This is done by specifiying the oversize parameters:
+
+Parameter        | Description
+-----------------|------------
+positive_oversize| String shown when value is positiv and it's integer value does not fit into the field
+negative_oversize| String shown when value is negative and it's integer value does not fit into the field
+
+At least there is the option to print strings instead of values, this uses the same specification method
+as known from the value2buttonColor node.
+
+Parameter         | Description
+------------------|-------------
+strintprint       | if true the stringprint_setup variable specifies the ranges in which a string is printed
+stringprint_setup | Specification when to write which string, see following paragraph
+
+
+
+The first given string is printed if the value is lower than any given value, 
+the last one is printed when the value is higher than any given value.
+
+In between the values are printed when the given value is exceeded.
+
+Example:
+
+	Low|-4|One|3|Two|6|High
+
+\n
+Example Results:
+Value | Result
+------|-------
+-6	  | Low
+-4 	  | Low
+ 3    | One
+ 5    | Two
+ 7    | High
+\n
+Example Conditions:
+String  | Prints when
+------- | ------------
+Low		| Value <=-4
+One		| Value <=3
+Two		| Value <=6
+High	| Value >6
+
+\n
+Example	Launchfile Codes:
+
+
+
+
+
 \page x52_value2buttonColor_node
 
 */

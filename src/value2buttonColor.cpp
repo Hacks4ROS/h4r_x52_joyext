@@ -18,9 +18,11 @@
 #include <std_msgs/Int8.h>
 #include <std_msgs/Int16.h>
 #include <std_msgs/Int32.h>
+#include <std_msgs/Int64.h>
 #include <std_msgs/UInt8.h>
 #include <std_msgs/UInt16.h>
 #include <std_msgs/UInt32.h>
+#include <std_msgs/UInt64.h>
 #include <std_msgs/Bool.h>
 #include <boost/algorithm/string.hpp>
 #include <sensor_msgs/Joy.h>
@@ -28,18 +30,19 @@
 
 enum
 {
-	INPUT_FLOAT32=0,
+	INPUT_FLOAT32 = 0,
 	INPUT_FLOAT64,
 	INPUT_INT8,
 	INPUT_INT16,
 	INPUT_INT32,
+	INPUT_INT64,
 	INPUT_UINT8,
 	INPUT_UINT16,
 	INPUT_UINT32,
+	INPUT_UINT64,
 	INPUT_BOOL,
 	INPUT_JOY,
-} ;
-
+};
 
 template <typename T>
 class PublishObject
@@ -256,15 +259,17 @@ int main(int argc, char **argv)
 
 	switch(type)
 	{
-		casem(INPUT_FLOAT64,double,Float64)
-		casem(INPUT_FLOAT32,float,Float32)
-		casem(INPUT_INT32,int32_t,Int32)
-		casem(INPUT_INT16,int16_t,Int16)
-		casem(INPUT_INT8,int8_t,Int8)
-		casem(INPUT_UINT32,uint32_t,UInt32)
-		casem(INPUT_UINT16,uint16_t,UInt16)
-		casem(INPUT_UINT8,uint8_t,UInt8)
-		casem(INPUT_BOOL,bool,Bool)
+	casem(INPUT_FLOAT64, double_t, Float64)
+	casem(INPUT_FLOAT32, float_t, Float32)
+	casem(INPUT_INT64, int64_t, Int64)
+	casem(INPUT_INT32, int32_t, Int32)
+	casem(INPUT_INT16, int16_t, Int16)
+	casem(INPUT_INT8, int8_t, Int8)
+	casem(INPUT_UINT64, uint64_t, UInt64)
+	casem(INPUT_UINT32, uint32_t, UInt32)
+	casem(INPUT_UINT16, uint16_t, UInt16)
+	casem(INPUT_UINT8, uint8_t, UInt8)
+	casem(INPUT_BOOL, bool, Bool)
 		case INPUT_JOY:
 		{
 			PublishObject< double > obj(&n,setup,led,axis_button, axis_or_button);
