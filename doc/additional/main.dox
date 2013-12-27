@@ -158,7 +158,7 @@ Date				  | Shows the current date (if set)
 Character Display     | Has 3 lines with 16 chars each
 Mode Switch Status    | Shows the current state of mode selector (button 27-29)
 
-\page x52_joyext_node
+\page x52_joyext_node x52_joyext_node
 
 The x52_joyext_node is responsible for the communication with the joystick extensions.
 It sets the LEDs and the MFD according to the information gathered from the input topics.
@@ -169,7 +169,7 @@ You can use the following piece of code for your launchfile to start the node
 
 
 
-\page x52_mfd_writer_node
+\page x52_mfd_writer_node x52_mfd_writer_node
 Printing values from std_msgs topics to the displays can be easily done with the x52_mfd_writer_node.
 
 For each topic which you want to see information on the display you need a mfd_writer node.
@@ -179,30 +179,30 @@ by the parameter "input_type"
 
 input_type | Description
 -----------| ------------
-0*         | float64
+0<sub>\ref color_std "a" </sub>  | float64
 1          | float32
 2		   | int64
 3          | int32
 4          | int16
-5***       | int8
+5<sub>\ref color_chr "b" </sub>       | int8
 6          | uint64
 7          | uint32
 8          | uint16
-9***       | uint8
+9<sub>\ref color_chr "b"</sub>       | uint8
 10         | bool
-11**       | Joy
+11<sub>\ref color_joy "c"</sub>        | Joy
 
-*Standard value\n
-**Requires additional setup information, see following table:
+
+
+b) \anchor color_chr When using a one byte value (mainly known as char in C/C++), it is normally treated as character.\n
+If the number value is wanted instead you have to set the value "char_as_int" to true. 
+
+c) \anchor color_joy Requires additional setup information, see following table:
 
 Parameter      | Description
 ---------------|----------
 axis_or_button | Defines if the value being used comes from an axis(false) or a button(true) 
 axis_button    | Defines the axis or button number
-
-***When using a one byte value (mainly known as char in C/C++), it is normally treated as character.\n
-If the number value is wanted instead you have to set the value "char_as_int" to true. 
-
 
 
 To specify the arangement in the display the following parameters are used.
@@ -218,10 +218,10 @@ the parameter align is used.
 
 Align  | Description
 -------|------------
-0*	   | Left  - The field is filled with spaces from the right side, so that the value is on the left
+0<sub>\ref color_std "a" </sub> | Left  - The field is filled with spaces from the right side, so that the value is on the left
 1      | Center - The field is filled with spaces from both sides
 2      | Right - The field is filled with spaces from the left side, so that the value is on the right
-*Standard value
+
 
 
 If the integer part of any value exceeds the field size, the user should be notified somehow, that
@@ -252,6 +252,7 @@ Example:
 	Low|-4|One|3|Two|6|High
 
 \n
+
 Example Results:
 Value | Result
 ------|-------
@@ -260,7 +261,9 @@ Value | Result
  3    | One
  5    | Two
  7    | High
+
 \n
+
 Example Conditions:
 String  | Prints when
 ------- | ------------
@@ -270,12 +273,34 @@ Two		| Value <=6
 High	| Value >6
 
 \n
-Example	Launchfile Codes:
+
+Copy\&Paste Launchfile Code:
+
+	<node pkg="x52_joyext" type="x52_mfd_writer_node" name="x52_mfd_writer_string" output="screen"> 
+		<param name="input_type" value="11"/>
+		<param name="line" value="1"/>
+		<param name="pos" value="0"/>
+		<param name="field_length" value="16"/>
+		<param name="align" value="1"/>
+		<param name="positive_oversize" value="++EE++"/>
+		<param name="negative_oversize" value="--EE--"/>
+		<param name="axis_or_button" value="false"/>
+		<param name="axis_button" value="4"/>
+		<param name="stringprint" value="true"/>
+		<param name="stringprint_setup" value="Green|-0.5|Yellow|0.5|Red"/>	
+		<param name="char_as_int" value="0"/>	
+		
+		<!-- Remap Topics -->	
+		<remap from="~/in" to="/joy" />
+		<remap from="~/mfd_text" to="/x52/mfd_text" />
+	</node>
+
+
+a) \anchor color_std Standard value\n
 
 
 
 
-
-\page x52_value2buttonColor_node
+\page x52_value2buttonColor_node x52_value2buttonColor_node
 
 */
