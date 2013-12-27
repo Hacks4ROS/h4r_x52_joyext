@@ -6,6 +6,113 @@
  * Have Fun! :-)
  */
 
+/**
+\page x52_value2buttonColor_node x52_value2buttonColor_node
+
+All supported message types can be seen in the following table, in a launch file, they are specified
+by the parameter "input_type"
+
+input_type | Description
+-----------| ------------
+0<sub>\ref col_std "a" </sub>  | float64
+1          | float32
+2		   | int64
+3          | int32
+4          | int16
+5          | int8
+6          | uint64
+7          | uint32
+8          | uint16
+9          | uint8
+10         | bool
+11<sub>\ref col_joy "b"</sub>        | Joy
+
+b) \anchor col_joy Requires additional setup information, see following table:
+
+Parameter      | Description
+---------------|----------
+axis_or_button | Defines if the value being used comes from an axis(false) or a button(true)
+axis_button    | Defines the axis or button number
+
+
+The color LED can be selected with the color_led parameter
+
+color_led | Description
+----------|------------
+0		  | LED FIRE
+1         | LED A
+2         | LED B
+3         | LED D
+4         | LED E
+5         | LED T1/2
+6         | LED T3/4
+7         | LED T5/6
+8         | LED POV 2
+9         | LED I
+
+
+
+Colors available:
+
+Color-Char | Description
+-----------| -----------
+O          | Off
+G		   | Green/On <sub>\ref col_on "c"</sub>
+Y          | Yellow
+R          | Red
+
+
+c) \anchor col_on FIRE Button only supports On or Off because the color is controlled by the saftey cover,
+when closed it is green and when opened red.
+
+For specifying what color the LED should be at which value the setup_string parameter
+must be supplied. It uses a special syntax. The first given color is set if the value is
+lower than any given value, the last one is set when the value is higher than any given value.
+In between the values are printed when the given value is exceeded.
+
+Example:
+
+	R|-4|Y|3|G|6|Y
+
+	\n
+
+Example Results:
+Value | Result
+------|-------
+-6	  | Red
+-4 	  | Red
+ 3    | Yellow
+ 5    | Green
+ 7    | Yellow
+
+\n
+
+Example Conditions:
+String  | Prints when
+------- | ------------
+Red		| Value <=-4
+Yellow	| Value <=3
+Green	| Value <=6
+Yellow	| Value >6
+
+\n
+
+Copy\&Paste Launchfile Code:
+
+	<node pkg="x52_joyext" type="x52_value2buttonColor_node" name="Color_Button_0" output="screen">
+		<param name="input_type" value="11"/>
+		<param name="joy_axis_button" value="4"/>
+		<param name="joy_axis_or_button" value="false"/>
+		<param name="color_led" value="4" />
+		<param name="setup_string" value="G|-0.5|Y|0.5|R"/>
+		<remap from="/Color_Button_0/in" to="/joy" />
+		<remap from="/Color_Button_0/led" to="/x52/leds" />
+	</node>
+
+
+a) \anchor col_std Standard value\n
+*/
+
 #include <ros/ros.h>
 #include <string>
 #include <vector>
