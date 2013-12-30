@@ -12,6 +12,7 @@
 #include <ros/ros.h>
 #include <string>
 #include <inttypes.h>
+#include <vector>
 #include <std_msgs/Float32.h>
 #include <std_msgs/Float64.h>
 #include <std_msgs/Int8.h>
@@ -44,7 +45,7 @@ public:
 	/**
 	 * Destructor
 	 */
-	~MenuEntryAbstraction()
+	virtual ~MenuEntryAbstraction()
 	{}
 
 	/**
@@ -460,9 +461,14 @@ public:
 
 class MenuCreator
 {
+private:
+	std::vector<MenuEntryAbstraction *> menu_entry_list;
+
 public:
 	MenuCreator(ros::NodeHandle &n);
 	virtual ~MenuCreator();
+
+	void run();
 };
 
 #endif /* MENUCREATOR_HPP_ */
