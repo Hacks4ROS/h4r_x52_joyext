@@ -27,40 +27,102 @@
 #include <boost/algorithm/string.hpp>
 #include <sensor_msgs/Joy.h>
 
+class MenuEntryAbstraction
+{
+	bool selected;	//!< True if this entry is currently selected
+	std::string EntryName; //!< The name shown in the display
+
+public:
+	/**
+	 * Constructor
+	 */
+	MenuEntryAbstraction(std::string EntryName)
+	:selected(false),
+	 EntryName(EntryName)
+	{}
+
+	/**
+	 * Destructor
+	 */
+	~MenuEntryAbstraction()
+	{}
+
+	/**
+	 * When in a value display the routine responsible for showing is getting each line
+	 * from in here.
+	 *
+	 * @param line The line to be returned
+	 * @param cursor
+	 * @return Line string according to line
+	 */
+	virtual std::string getFullScreenLine(uint8_t line, uint8_t cursor)=0;
+
+	/**
+	 * Scrollwheel
+	 * @param up Scrollwheel up
+	 * @param down Scrollwheel down
+	 * @param enter The scrollwheel button
+	 * @return true if user is done with entry
+	 */
+	virtual bool scrollwheel(bool up, bool down, bool enter)=0;
+
+	/**
+	 * Sets the state if the menu entry is selected
+	 * @param selected selected state
+	 */
+	void setSelected(bool selected)
+	{
+		this->selected=selected;
+	}
+
+	/**
+	 * When in Menu display the routine responsible for collecting the menu
+	 * data will call this to get the then displayed menu line for this entry.
+	 * @return EntryName
+	 */
+	virtual std::string getMenuLine()=0;
+};
+
+
+
+
+
+
+
 
 template <typename V, class MSG, class MSGPTR>
-class MenuEntry
+class MenuEntry : public MenuEntryAbstraction
 {
+public:
 
-		typedef enum
-		{
-			USER_INTERACT_BACK,
-			USER_INTERACT_PUBLISH,
-			USER_INTERACT_PUBVAL,
-			USER_INTERACT_SUBVAL,
-			USER_INTERACT_PUBVAL_EDIT,
-		}user_interact_state_t;
+	typedef enum
+	{
+		USER_INTERACT_BACK,
+		USER_INTERACT_PUBLISH,
+		USER_INTERACT_PUBVAL,
+		USER_INTERACT_SUBVAL,
+		USER_INTERACT_PUBVAL_EDIT,
+	}user_interact_state_t;
 
-		/**
-		 * The type for the list entry
-		 */
-		enum Type
-		{
-			Pub,   //!< Pub Publisher - editable by the user - sends out value after edit
-			Sub,   //!< Sub Subscriber - gets value from topic
-			PubSub,//!< PubSub Editable by user and gets value from topic
-			Simple,//!< Simple Value received by Simple topic
-		};
+	/**
+	 * The type for the list entry
+	 */
+	enum Type
+	{
+		Pub,   //!< Pub Publisher - editable by the user - sends out value after edit
+		Sub,   //!< Sub Subscriber - gets value from topic
+		PubSub,//!< PubSub Editable by user and gets value from topic
+		Simple,//!< Simple Value received by Simple topic
+	};
 
-
+private:
 	V value; //!< The value
 	V useredit; //!< The variable where the value is stored the user edits
+	Type type;
 	ros::NodeHandle *n;	//!<The node handler
-	std::string EntryName; //!< The name shown in the display
 	ros::Publisher pub; //! The publisher if it is able to publish
 	ros::Subscriber sub; //! The subscriber if it is able to subscribe
 
-	bool selected;	//!< True if this entry is currently selected
 
 	bool en_pub; //!< True if this entry has a publisher
 	bool en_sub; //!< True if this entry has a subscriber
@@ -69,7 +131,6 @@ class MenuEntry
 
 	bool button_need_release; //!< For the function scrollwheel this stores if the button has been released before
 
-private:
 	/**
 	 * The callback function for setting the value from a subscriber
 	 * @param msg Message data
@@ -125,16 +186,17 @@ public:
 	 * @param topic The name of the topic when type=Sub,Pub or PubSub
 	 * @param latch If a publisher is used, it supplies the latching parameter
 	 */
-	MenuEntry(ros::NodeHandle &n, std::string EntryName, MenuEntry::Type type=Simple, std::string topic="", bool latch)
+	MenuEntry(ros::NodeHandle &n, std::string EntryName, MenuEntry::Type type=Simple, std::string topic="", bool latch=0)
 	:value(0),
 	 useredit(0),
+	 type(type),
 	 n(n),
-	 EntryName(EntryName),
-	 selected(false),
 	 en_pub(false),
 	 en_sub(false),
-	 interact(USER_INTERACT_BACK)
+	 interact(USER_INTERACT_BACK),
+	 button_need_release(false)
 	{
+		this->MenuEntryAbstraction(EntryName);
 		if(type!=Simple)
 		{
 			bool en_pub=false;
@@ -179,24 +241,12 @@ public:
 	~MenuEntry()
 	{}
 
-	/**
-	 * When in Menu display the routine responsible for collecting the menu
-	 * data will call this to get the then displayed menu line for this entry.
-	 * @return EntryName
-	 */
 	std::string getMenuLine()
 	{
 		return EntryName;
 	}
 
-	/**
-	 * When in a value display the routine responsible for showing is getting each line
-	 * from in here.
-	 *
-	 * @param line The line to be returned
-	 * @param cursor
-	 * @return Line string according to line
-	 */
+
 	std::string getFullScreenLine(uint8_t line, uint8_t cursor)
 	{
 
@@ -222,13 +272,7 @@ public:
 		ROS_ERROR("Entry was in wrong interaction state!  %i %i", type, interact);\
 		interact=USER_INTERACT_BACK
 
-	/**
-	 * Scrollwheel
-	 * @param up Scrollwheel up
-	 * @param down Scrollwheel down
-	 * @param enter The scrollwheel button
-	 * @return true if user is done with entry
-	 */
+
 	bool scrollwheel(bool up, bool down, bool enter)
 	{
 		//Prevent multiple button press events when it was pressed only once
@@ -410,8 +454,6 @@ public:
 		this->selected=selected;
 		this->interact=USER_INTERACT_BACK;
 	}
-
-
 
 };
 

@@ -107,11 +107,15 @@ include_directories( include
 
 ## Declare a cpp library
 add_library(x52_joyext src/x52_joyext.cpp)
+add_library(x52_menu_creator src/MenuCreator.cpp)
+
 
 ## Declare a cpp executable
 add_executable(x52_joyext_node src/x52_joyext_node.cpp)
 add_executable(x52_value2buttonColor_node src/value2buttonColor.cpp)
 add_executable(x52_mfd_writer_node src/mfd_writer.cpp)
+add_executable(x52_menu_creator_node src/menu_creator_node.cpp)
+
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
@@ -119,6 +123,7 @@ add_dependencies(x52_joyext x52_joyext_generate_messages_cpp)
 add_dependencies(x52_joyext_node x52_joyext_generate_messages_cpp)
 add_dependencies(x52_value2buttonColor_node x52_joyext_generate_messages_cpp)
 add_dependencies(x52_mfd_writer_node x52_joyext_generate_messages_cpp)
+add_dependencies(x52_menu_creator_node x52_joyext_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(x52_joyext
@@ -143,10 +148,15 @@ target_link_libraries(x52_value2buttonColor_node
 target_link_libraries(x52_mfd_writer_node
    ${LIBX52}
    ${catkin_LIBRARIES}
-   ${LIBX52PRO_LIBRARIES}
+   ${LIBX52PRO_LIBRARIES} 
 )
 
-
+target_link_libraries(x52_menu_creator_node
+   x52_menu_creator
+   ${LIBX52}
+   ${catkin_LIBRARIES}
+   ${LIBX52PRO_LIBRARIES}
+)
 #############
 ## Install ##
 #############
@@ -167,6 +177,7 @@ target_link_libraries(x52_mfd_writer_node
    x52_joyext_node
    x52_value2buttonColor_node
    x52_mfd_writer_node
+   x52_menu_creator_node
    ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
    LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
    RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
