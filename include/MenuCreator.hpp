@@ -30,6 +30,22 @@
 
 class MenuEntryAbstraction
 {
+public:
+	typedef void (*updateFktPtr)(void);
+	/**
+	 * The type for the list entry
+	 */
+	typedef enum
+	{
+		Pub,   //!< Pub Publisher - editable by the user - sends out value after edit
+		Sub,   //!< Sub Subscriber - gets value from topic
+		PubSub,//!< PubSub Editable by user and gets value from topic
+		Simple,//!< Simple Value received by Simple topic
+	}EntryType;
+
+
+protected:
+	updateFktPtr update; //!< update function, if there is new stuff to write to display
 	bool selected;	//!< True if this entry is currently selected
 	std::string EntryName; //!< The name shown in the display
 
@@ -37,9 +53,10 @@ public:
 	/**
 	 * Constructor
 	 */
-	MenuEntryAbstraction(std::string EntryName)
+	MenuEntryAbstraction(std::string EntryName,updateFktPtr update)
 	:selected(false),
-	 EntryName(EntryName)
+	 EntryName(EntryName),
+	 update(update)
 	{}
 
 	/**
@@ -53,10 +70,9 @@ public:
 	 * from in here.
 	 *
 	 * @param line The line to be returned
-	 * @param cursor
 	 * @return Line string according to line
 	 */
-	virtual std::string getFullScreenLine(uint8_t line, uint8_t cursor)=0;
+	virtual std::string getFullScreenLine(uint8_t line)=0;
 
 	/**
 	 * Scrollwheel
@@ -82,6 +98,17 @@ public:
 	 * @return EntryName
 	 */
 	virtual std::string getMenuLine()=0;
+
+	/**
+	 * Getter for the EntryName
+	 */
+	std::string getEntryName()
+	{
+		return EntryName;
+	}
+
+
+
 };
 
 
@@ -105,21 +132,12 @@ public:
 		USER_INTERACT_PUBVAL_EDIT,
 	}user_interact_state_t;
 
-	/**
-	 * The type for the list entry
-	 */
-	enum Type
-	{
-		Pub,   //!< Pub Publisher - editable by the user - sends out value after edit
-		Sub,   //!< Sub Subscriber - gets value from topic
-		PubSub,//!< PubSub Editable by user and gets value from topic
-		Simple,//!< Simple Value received by Simple topic
-	};
+
 
 private:
 	V value; //!< The value
 	V useredit; //!< The variable where the value is stored the user edits
-	Type type;
+	EntryType type;
 	ros::NodeHandle *n;	//!<The node handler
 	ros::Publisher pub; //! The publisher if it is able to publish
 	ros::Subscriber sub; //! The subscriber if it is able to subscribe
@@ -187,7 +205,7 @@ public:
 	 * @param topic The name of the topic when type=Sub,Pub or PubSub
 	 * @param latch If a publisher is used, it supplies the latching parameter
 	 */
-	MenuEntry(ros::NodeHandle &n, std::string EntryName, MenuEntry::Type type=Simple, std::string topic="", bool latch=0)
+	MenuEntry(ros::NodeHandle &n, std::string EntryName, MenuEntryAbstraction::EntryType type=Simple, std::string topic="", bool latch=0)
 	:value(0),
 	 useredit(0),
 	 type(type),
@@ -248,7 +266,7 @@ public:
 	}
 
 
-	std::string getFullScreenLine(uint8_t line, uint8_t cursor)
+	std::string getFullScreenLine(uint8_t line)
 	{
 
 		switch(line)
@@ -268,6 +286,7 @@ public:
 			ROS_ERROR("MenuCreator::getFullScreenLine-Error Line not possible: %i",line);
 			break;
 		}
+		return "---LINE-ERROR---";
 	}
 #define	USER_INTERACT_STATE_ERROR\
 		ROS_ERROR("Entry was in wrong interaction state!  %i %i", type, interact);\

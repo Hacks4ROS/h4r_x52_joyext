@@ -14,4 +14,5 @@ int main(int argc, char **argv)
 	ros::init(argc, argv, "X52MenuCreator");
 	ros::NodeHandle n("~");
 	MenuCreator node(n);
+	node.run();
 }
