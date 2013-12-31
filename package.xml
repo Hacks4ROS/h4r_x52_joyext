@@ -2,7 +2,8 @@
 <package>
   <name>x52_joyext</name>
   <version>1.0.1</version>
-  <description>The x52_joyext is used for controlling the MFD on the Saitek X52 Pro Joystick. Modified from original x52_joyext by Christian Holl</description>
+  <description>The x52_joyext is used for controlling the MFD on the Saitek X52 Pro Joystick.</description>
+  <maintainer email="cyborg-x1@gmail.com">Christian Holl</maintainer>
   <maintainer email="muhrix@gmail.com">Murilo F. M.</maintainer>
   <author email="cyborg-x1@gmail.com">Christian Holl</author>
   <license>BSD</license>
