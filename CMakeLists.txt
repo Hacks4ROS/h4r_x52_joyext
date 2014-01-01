@@ -54,6 +54,7 @@ add_message_files(
    x52_led_color.msg  
    x52_mfd.msg  
    x52_time.msg
+   x52_simple_menu_entry.msg
 )
 
 ## Generate services in the 'srv' folder

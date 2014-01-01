@@ -26,6 +26,10 @@ enum
 
 MenuCreator::MenuCreator(ros::NodeHandle &n)
 {
+	this->n=&n;
+	insideEntry=false;
+
+
 	std::string setup;
 	// TODO Auto-generated constructor stub
 	n.param<std::string>("menu_setup", setup, "");
@@ -145,6 +149,16 @@ MenuCreator::MenuCreator(ros::NodeHandle &n)
 
 		num++;
 	}
+
+	n.param<int>("up_button", this->up, 36);
+	n.param<int>("down_button", this->down, 37);
+	n.param<int>("enter_button", this->enter, 38);
+	pub_mfd=n.advertise< x52_joyext::x52_mfd >("/mfd_text",1);
+	sub_joy=n.subscribe<sensor_msgs::Joy>("/joy",1, &MenuCreator::cb_joy, this);
+	current_entry=menu_entry_list.begin();
+
+	for (int i = 0; i < 3; ++i)
+	current_display_content.push_back("                ");
 }
 
 MenuCreator::~MenuCreator()
@@ -160,16 +174,133 @@ MenuCreator::~MenuCreator()
 
 void MenuCreator::run()
 {
-	ros::Rate loop_rate(10);
+	//ros::Rate loop_rate(5);
 
-	while (ros::ok())
+	ros::spin();
+}
+
+
+void MenuCreator::cb_joy(const sensor_msgs::JoyConstPtr &msg)
+{
+
+	//Prevent multiple button press events when it was pressed only once
+	if(button_need_release)
 	{
-		loop_rate.sleep();
-		ros::spinOnce();
+		if(!msg->buttons[up] && !msg->buttons[down] && !msg->buttons[enter])
+		{
+
+			button_need_release=false;
+		}
+		return;
 	}
+	else if(!button_need_release && (msg->buttons[up] || msg->buttons[down] || msg->buttons[enter]))
+	{
+		button_need_release=true;
+	}
+
+
+	if(menu_entry_list.size()!=0)
+	{
+		if((*current_entry)->getSelected()) //entry control
+		{
+			(*current_entry)->scrollwheel(msg->buttons[up] ,msg->buttons[down], msg->buttons[enter]);
+		}
+		else //menu control
+		{
+			if(msg->buttons[enter])
+			{
+				(*current_entry)->setSelected(true);
+			}
+			else if(msg->buttons[up] && !msg->buttons[down] && (current_entry!=menu_entry_list.begin()) )
+			{
+				current_entry--;
+			}
+			else if(msg->buttons[down] && !msg->buttons[up] && (current_entry!=menu_entry_list.end()-1))
+			{
+				current_entry++;
+			}
+			update();
+			ROS_INFO("%s",(*current_entry)->getEntryName().c_str());
+		}
+
+	}
+}
+
+void MenuCreator::cb_simple(const x52_joyext::x52_simple_menu_entry &msg)
+{
+
 }
 
 void MenuCreator::update()
 {
+	std::vector<std::string>new_content;
 
+	if(menu_entry_list.size()!=0)
+	{
+		if((*current_entry)->getSelected())
+		{
+			for (int l = 0; l < 3; ++l)
+			{
+				new_content.push_back((*current_entry)->getFullScreenLine(l));
+			}
+		}
+		else
+		{
+			//Previous Line
+			if(current_entry==menu_entry_list.begin())
+			{
+				ROS_INFO("Current List Begin!");
+				new_content.push_back("--List---Start--");
+			}
+			else
+			{
+ 				new_content.push_back((*(current_entry-1))->getEntryName());
+			}
+
+			//Current Line
+			new_content.push_back(">"+(*current_entry)->getEntryName());
+
+			//Next line
+			if(current_entry==menu_entry_list.end()-1)
+			{
+				ROS_INFO("Current List End!");
+				new_content.push_back("---List---End---");
+			}
+			else
+			{
+				new_content.push_back((*(current_entry+1))->getEntryName());
+			}
+		}
+	}
+	else
+	{
+		new_content.push_back(" no entries in  ");
+		new_content.push_back("    MFD Menu    ");
+		new_content.push_back("                ");
+	}
+
+	for (int c = 0;  c < 3; ++ c)
+	{
+		if(new_content[c].size()>16)
+			new_content[c].erase(16,new_content.size()-16);
+
+		if(new_content[c].size()<16)
+		{
+			for (int f = 16-new_content[c].size(); f > 0 ; --f)
+			{
+				new_content[c].push_back(' ');
+			}
+		}
+
+			//Publish current line
+			x52_joyext::x52_mfd msg;
+
+			msg.clearDisplay=false;
+			msg.data=new_content[c];
+			msg.line=c;
+			msg.pos=0;
+
+			pub_mfd.publish(msg);
+
+	}
 }

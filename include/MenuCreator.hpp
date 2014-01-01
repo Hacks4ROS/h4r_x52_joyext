@@ -25,6 +25,7 @@
 #include <std_msgs/UInt64.h>
 #include <std_msgs/Bool.h>
 #include <x52_joyext/x52_mfd.h>
+#include <x52_joyext/x52_simple_menu_entry.h>
 #include <boost/algorithm/string.hpp>
 #include <sensor_msgs/Joy.h>
 #include <type_traits>
@@ -82,7 +83,7 @@ public:
 	 * @param up Scrollwheel up
 	 * @param down Scrollwheel down
 	 * @param enter The scrollwheel button
-	 * @return true if user is done with entry
+	 * @return true if user is done with entry //TODO remove return value, not needed
 	 */
 	virtual bool scrollwheel(bool up, bool down, bool enter)=0;
 
@@ -94,6 +95,16 @@ public:
 	{
 		this->selected=selected;
 	}
+
+	/**
+	 * Getter for selected state
+	 * @return selected
+	 */
+	bool getSelected()
+	{
+		return selected;
+	}
+
 
 	/**
 	 * When in Menu display the routine responsible for collecting the menu
@@ -150,8 +161,6 @@ private:
 	bool en_sub; //!< True if this entry has a subscriber
 
 	user_interact_state_t interact; //!<If it is selected this is the interact state.
-
-	bool button_need_release; //!< For the function scrollwheel this stores if the button has been released before
 
 	/**
 	 * The callback function for setting the value from a subscriber
@@ -253,8 +262,7 @@ public:
 	 n(n),
 	 en_pub(false),
 	 en_sub(false),
-	 interact(USER_INTERACT_BACK),
-	 button_need_release(false)
+	 interact(USER_INTERACT_BACK)
 	{
 		if(type!=Simple)
 		{
@@ -375,20 +383,6 @@ public:
 
 	bool scrollwheel(bool up, bool down, bool enter)
 	{
-		//Prevent multiple button press events when it was pressed only once
-		if(button_need_release)
-		{
-			if(!up && !down && !enter)
-			{
-				update();
-				button_need_release=false;
-			}
-			return 0;
-		}
-		else if(!button_need_release && (up || down || enter))
-		{
-			button_need_release=true;
-		}
 
 		if(enter)//scrollwheel pressed
 		{
@@ -563,9 +557,27 @@ public:
 
 class MenuCreator
 {
+	int up;
+	int down;
+	int enter;
+
+	bool insideEntry;
+	ros::NodeHandle *n;
+	ros::Publisher pub_mfd;
+	ros::Subscriber sub_joy;
+	ros::Subscriber simple_topic;
+	std::vector<MenuEntryAbstraction*>::iterator current_entry;
+	std::vector<std::string> current_display_content;
+
+	bool button_need_release; //!< For the function scrollwheel this stores if the button has been released before
+
+
 private:
 	std::vector<MenuEntryAbstraction *> menu_entry_list;
 	void update();
+	void cb_joy(const sensor_msgs::JoyConstPtr &msg);
+	void cb_simple(const x52_joyext::x52_simple_menu_entry &msg);
+
 public:
 	MenuCreator(ros::NodeHandle &n);
 	virtual ~MenuCreator();

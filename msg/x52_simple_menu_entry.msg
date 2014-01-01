@@ -6,14 +6,14 @@ string EntryName
 #the first value of it the value of the entry
 #any other value or array comming later is IGNORED!
 
-float64[] double
-float32[] float
-bool[]    boolean
-int8[]    integer8
-uint8[]   uinteger8
-int16[]   integer16
-uint16[]  uinteger16
-int32[]   integer32
-uint32[]  uinteger32
-int64[]   integer64
-uint64[]  uinteger64
+float64[] double_var
+float32[] float_var
+bool[]    boolean_var
+int8[]    integer8_var
+uint8[]   uinteger8_var
+int16[]   integer16_var
+uint16[]  uinteger16_var
+int32[]   integer32_var
+uint32[]  uinteger32_var
+int64[]   integer64_var
+uint64[]  uinteger64_var
