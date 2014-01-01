@@ -316,11 +316,51 @@ public:
 			break;
 		case 1:
 		{
-			return ValueString(value);
+			switch(interact)
+			{
+
+			case USER_INTERACT_SUBVAL:
+				return " >" + ValueString(value);
+				break;
+
+			case USER_INTERACT_PUBVAL:
+				return "P>" + ValueString(useredit);
+				break;
+
+			case USER_INTERACT_PUBVAL_EDIT:
+				return "P" + 0x7e  /*On this display: ->*/ + ValueString(useredit);
+				break;
+
+			default:
+				if(type==Pub)
+					return "P " + ValueString(value);
+				else
+					return "  " + ValueString(value);
+				break;
+			}
+
 		}
 		break;
 		case 2:
+		{
+			std::string row2;
+			if(type==Pub || type==PubSub)
+				row2=" Back    Publish";
+			else
+				row2=" Back           ";
 
+			switch(interact)
+			{
+			case USER_INTERACT_BACK:
+				row2[0]='>';
+				break;
+			case USER_INTERACT_PUBLISH:
+				row2[8]='>';
+			default:
+				break;
+			}
+			return row2;
+		}
 			break;
 		default:
 			ROS_ERROR("MenuCreator::getFullScreenLine-Error Line not possible: %i",line);

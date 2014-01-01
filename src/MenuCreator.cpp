@@ -160,9 +160,12 @@ MenuCreator::~MenuCreator()
 
 void MenuCreator::run()
 {
+	ros::Rate loop_rate(10);
+
 	while (ros::ok())
 	{
-
+		loop_rate.sleep();
+		ros::spinOnce();
 	}
 }
 
