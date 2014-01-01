@@ -6,7 +6,9 @@
  * Have Fun! :-)
  */
 #include "MenuCreator.hpp"
-
+#include <boost/function.hpp>
+#include <boost/bind.hpp>
+#include <algorithm>
 enum
 {
 	INPUT_FLOAT32 = 0,
@@ -22,86 +24,124 @@ enum
 	INPUT_BOOL,
 };
 
-#define casem(CASE,TYPE,TYPEROS)\
-	case CASE:\
-	{\
-		MenuEntry<TYPE, std_msgs::TYPEROS, std_msgs:: TYPEROS## ConstPtr>()>a;\
-		break;\
-	}\
-
-
-
 MenuCreator::MenuCreator(ros::NodeHandle &n)
 {
 	std::string setup;
 	// TODO Auto-generated constructor stub
-	n.param<std::string>("menu_setup",setup,"");
+	n.param<std::string>("menu_setup", setup, "");
 
 	std::vector<std::string> menu_entries;
-	boost::split(menu_entries, setup,
-			boost::is_any_of("|"));
+	boost::split(menu_entries, setup, boost::is_any_of("|"));
 
-	int num=0; //Counting statement number
-	for (std::vector<std::string>::iterator entry= menu_entries.begin(); entry != menu_entries.end(); entry++)
+	int num = 0; //Counting statement number
+	for (std::vector<std::string>::iterator entry = menu_entries.begin();
+			entry != menu_entries.end(); entry++)
 	{
 		std::vector<std::string> entrySetup;
-		boost::split(entrySetup, *entry,
-				boost::is_any_of(";"));
+		boost::split(entrySetup, *entry, boost::is_any_of(";"));
+
+		//Check if we have at least 3 entries
+		if (entrySetup.size() < 3)
+		{
+			ROS_ERROR(
+					"ERROR entry number %i: Minimum required arguments: 3! -> not created",
+					num);
+			continue;
+		}
 
 		//Name
-		if(entrySetup[0].size()==0)
+		if (entrySetup[0].size() == 0)
 		{
-			ROS_ERROR("ERROR entry number %i: Name is zero length! -> not created!", num);
+			ROS_ERROR(
+					"ERROR entry number %i: Name is zero length! -> not created!",
+					num);
 			continue;
 		}
 
 		std::istringstream et(entrySetup[1]);
 		unsigned int EntryType;
-		et>>EntryType;
-		if(et.bad() || et.fail() || !et.eof()
-		   || !(EntryType==MenuEntryAbstraction::Pub
-				   || EntryType==MenuEntryAbstraction::Sub
-				   || EntryType==MenuEntryAbstraction::PubSub
-				   || EntryType == MenuEntryAbstraction::Simple)
-				   )
+		et >> EntryType;
+		if (et.bad() || et.fail() || !et.eof()
+				|| !(EntryType == MenuEntryAbstraction::Pub
+						|| EntryType == MenuEntryAbstraction::Sub
+						|| EntryType == MenuEntryAbstraction::PubSub
+						|| EntryType == MenuEntryAbstraction::Simple))
 		{
-			ROS_ERROR("ERROR entry type for entry %i: %s  -> Entry not created", num ,entrySetup[1].c_str());
+			ROS_ERROR("ERROR entry type for entry %i: %s  -> Entry not created",
+					num, entrySetup[1].c_str());
 			continue;
 		}
 
-std::string topic;
-bool latch;
+		if (EntryType == MenuEntryAbstraction::Simple)
+		{
+
+		}
+		else
+		{
+			if (entrySetup.size() < 4)
+			{
+				ROS_ERROR(
+						"ERROR entry number %i: Minimum required arguments: 4! -> not created",
+						num);
+				continue;
+			}
+
+			std::string topic = entrySetup[3];
+			if (EntryType != MenuEntryAbstraction::Simple && topic.size() == 0)
+			{
+				ROS_ERROR("ERROR topic name is empty for entry %i", num);
+			}
+
+			bool latch = false;
+			if (entrySetup.size() > 4)
+			{
+				//to lower case
+				std::transform(entrySetup[4].begin(), entrySetup[4].end(),
+						entrySetup[4].begin(), ::tolower);
+				if (entrySetup[4] == "true" || entrySetup[4] == "1")
+				{
+					latch = true;
+				}
+				else if (entrySetup[4] == "false" || entrySetup[4] == "0")
+				{
+					//already false
+				}
+				else
+				{
+					ROS_ERROR("ERROR in latching argument for entry %i", num);
+					continue;
+				}
+			}
+
+#define casePS(CASE,TYPE,TYPEROS)\
+	case CASE:\
+	{\
+		menu_entry_list.push_back(new MenuEntry<TYPE, std_msgs::TYPEROS, std_msgs::TYPEROS##ConstPtr>(&n,entrySetup[0],std::bind(&MenuCreator::update,this),(MenuEntryAbstraction::EntryType)EntryType,topic,latch));\
+		break;\
+	}\
 
 
-	int type=0;	//!< The input type
-	n.param<int>("input_type", type, INPUT_FLOAT64);
-	switch (type)
-	{
-	case INPUT_FLOAT64:\
-		{\
-			MenuEntry<double_t, std_msgs::Float64, std_msgs::Float64ConstPtr> a(n,"narf",0,"narf",1);
-			break;\
-		}\
+			int type = 0;	//!< The input type
+			n.param<int>("input_type", type, INPUT_FLOAT64);
+			switch (type)
+			{
+			casePS(INPUT_FLOAT64, double_t, Float64)
+			casePS(INPUT_FLOAT32, float_t, Float32)
+			casePS(INPUT_INT64, int64_t, Int64)
+			casePS(INPUT_INT32, int32_t, Int32)
+			casePS(INPUT_INT16, int16_t, Int16)
+			casePS(INPUT_INT8, int8_t, Int8)
+			casePS(INPUT_UINT64, uint64_t, UInt64)
+			casePS(INPUT_UINT32, uint32_t, UInt32)
+			casePS(INPUT_UINT16, uint16_t, UInt16)
+			casePS(INPUT_UINT8, uint8_t, UInt8)
+			casePS(INPUT_BOOL, bool, Bool)
+			default:
+				break;
 
+			}
 
-
-//	casem(INPUT_FLOAT64, double_t, Float64)
-//	casem(INPUT_FLOAT32, float_t, Float32)
-//	casem(INPUT_INT64, int64_t, Int64)
-//	casem(INPUT_INT32, int32_t, Int32)
-//	casem(INPUT_INT16, int16_t, Int16)
-//	casem(INPUT_INT8, int8_t, Int8)
-//	casem(INPUT_UINT64, uint64_t, UInt64)
-//	casem(INPUT_UINT32, uint32_t, UInt32)
-//	casem(INPUT_UINT16, uint16_t, UInt16)
-//	casem(INPUT_UINT8, uint8_t, UInt8)
-//	casem(INPUT_BOOL, bool, Bool)
-	default:
-		break;
-
-	}
-
-
+		}
 
 		num++;
 	}
@@ -120,8 +160,13 @@ MenuCreator::~MenuCreator()
 
 void MenuCreator::run()
 {
-	while(ros::ok())
+	while (ros::ok())
 	{
 
 	}
+}
+
+void MenuCreator::update()
+{
+
 }

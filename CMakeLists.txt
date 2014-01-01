@@ -110,6 +110,7 @@ add_library(x52_joyext src/x52_joyext.cpp)
 add_library(x52_menu_creator src/MenuCreator.cpp)
 
 
+
 ## Declare a cpp executable
 add_executable(x52_joyext_node src/x52_joyext_node.cpp)
 add_executable(x52_value2buttonColor_node src/value2buttonColor.cpp)
@@ -157,6 +158,12 @@ target_link_libraries(x52_menu_creator_node
    ${catkin_LIBRARIES}
    ${LIBX52PRO_LIBRARIES}
 )
+
+
+set_target_properties(x52_menu_creator_node PROPERTIES COMPILE_FLAGS -std=c++11)
+set_target_properties(x52_menu_creator PROPERTIES COMPILE_FLAGS -std=c++11)
+ 	
+
 #############
 ## Install ##
 #############

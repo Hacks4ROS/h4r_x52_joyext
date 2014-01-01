@@ -27,11 +27,14 @@
 #include <x52_joyext/x52_mfd.h>
 #include <boost/algorithm/string.hpp>
 #include <sensor_msgs/Joy.h>
-
+#include <type_traits>
+#include <cstdint>
+#include <iostream>
 class MenuEntryAbstraction
 {
 public:
-	typedef void (*updateFktPtr)(void);
+	typedef std::function<void()> updateFktPtr;
+
 	/**
 	 * The type for the list entry
 	 */
@@ -45,7 +48,7 @@ public:
 
 
 protected:
-	updateFktPtr update; //!< update function, if there is new stuff to write to display
+	std::function<void()> update; //!< update function, if there is new stuff to write to display
 	bool selected;	//!< True if this entry is currently selected
 	std::string EntryName; //!< The name shown in the display
 
@@ -53,7 +56,7 @@ public:
 	/**
 	 * Constructor
 	 */
-	MenuEntryAbstraction(std::string EntryName,updateFktPtr update)
+	MenuEntryAbstraction(std::string EntryName,std::function<void()> update)
 	:selected(false),
 	 EntryName(EntryName),
 	 update(update)
@@ -156,9 +159,52 @@ private:
 	 */
 	void Callback(const MSGPTR& msg)
 	{
+		if(selected)
+			this->update();
 		value=msg->data;
 	}
 
+	template <typename T>
+	void inc(T)
+	{
+		useredit++;
+	}
+
+	template <typename T>
+	void dec(T)
+	{
+		useredit--;
+	}
+
+	void inc(float)
+	{
+		useredit+=0.1;
+	}
+
+	void dec(float)
+	{
+		useredit-=0.1;
+	}
+
+	void inc(double)
+	{
+		useredit+=0.1;
+	}
+
+	void dec(double)
+	{
+		useredit-=0.1;
+	}
+
+	void inc(bool)
+	{
+		useredit=true;
+	}
+
+	void dec(bool)
+	{
+		useredit=false;
+	}
 
 	/**
 	 * Returns the string for a value
@@ -168,33 +214,27 @@ private:
 	std::string ValueString(V value)
 	{
 		std::ostringstream ss;
-		ss<<value;
+
+		if (std::is_same<signed char, V>::value)
+		{
+			ss<<(int)value;
+		}
+		else if(std::is_same<unsigned char, V>::value)
+		{
+			ss<<(unsigned int)value;
+		}
+		else if(std::is_same<bool, V>::value)
+		{
+			ss<<(value)?"True":"False";
+		}
+		else
+		{
+			ss<<value;
+		}
 		return ss.str();
 	}
 
-	/**
-	 * Returns the string for a signed char
-	 * @param value The Value
-	 * @return String of value
-	 */
-	std::string ValueString(signed char value)
-	{
-		std::ostringstream ss;
-		ss<<(int)value;
-		return ss.str();
-	}
 
-	/**
-	 * Returns the string for a unsigned char
-	 * @param value The Value
-	 * @return String of value
-	 */
-	std::string ValueString(unsigned char value)
-	{
-		std::ostringstream ss;
-		ss<<(unsigned int)value;
-		return ss.str();
-	}
 
 public:
 	/**
@@ -205,8 +245,9 @@ public:
 	 * @param topic The name of the topic when type=Sub,Pub or PubSub
 	 * @param latch If a publisher is used, it supplies the latching parameter
 	 */
-	MenuEntry(ros::NodeHandle &n, std::string EntryName, MenuEntryAbstraction::EntryType type=Simple, std::string topic="", bool latch=0)
-	:value(0),
+	MenuEntry(ros::NodeHandle *n, std::string EntryName, MenuEntryAbstraction::updateFktPtr update, MenuEntryAbstraction::EntryType type=Simple, std::string topic="", bool latch=0)
+	:MenuEntryAbstraction(EntryName,update),
+     value(0),
 	 useredit(0),
 	 type(type),
 	 n(n),
@@ -215,7 +256,6 @@ public:
 	 interact(USER_INTERACT_BACK),
 	 button_need_release(false)
 	{
-		this->MenuEntryAbstraction(EntryName);
 		if(type!=Simple)
 		{
 			bool en_pub=false;
@@ -238,12 +278,12 @@ public:
 
 				if(en_pub)
 				{
-					pub= n.advertise<MSG>(topic,1,latch);
+					pub= n->advertise<MSG>(topic,1,latch);
 				}
 
 				if(en_sub)
 				{
-					sub = n.subscribe<MSG>(topic, 1, &MenuEntry<V,MSG,MSGPTR>::Callback,this);
+					sub = n->subscribe<MSG>(topic, 1, &MenuEntry<V,MSG,MSGPTR>::Callback,this);
 				}
 			}
 			else
@@ -299,7 +339,10 @@ public:
 		if(button_need_release)
 		{
 			if(!up && !down && !enter)
+			{
+				update();
 				button_need_release=false;
+			}
 			return 0;
 		}
 		else if(!button_need_release && (up || down || enter))
@@ -396,7 +439,7 @@ public:
 				break;
 
 			case USER_INTERACT_PUBVAL_EDIT:
-				useredit++;
+				inc(useredit);
 				break;
 			}
 		}
@@ -452,7 +495,7 @@ public:
 				{
 					case Pub:
 					case PubSub:
-						useredit--;
+						dec(useredit);
 						break;
 					default:
 						USER_INTERACT_STATE_ERROR;
@@ -482,7 +525,7 @@ class MenuCreator
 {
 private:
 	std::vector<MenuEntryAbstraction *> menu_entry_list;
-
+	void update();
 public:
 	MenuCreator(ros::NodeHandle &n);
 	virtual ~MenuCreator();
