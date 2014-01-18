@@ -5,6 +5,7 @@
   <description>The x52_joyext is used for controlling the MFD on the Saitek X52 Pro Joystick.</description>
   <maintainer email="cyborg-x1@gmail.com">Christian Holl</maintainer>
   <maintainer email="muhrix@gmail.com">Murilo F. M.</maintainer>
+  <url>http://wiki.ros.org/x52_joyext</url>
   <author email="cyborg-x1@gmail.com">Christian Holl</author>
   <license>BSD</license>
   <buildtool_depend>catkin</buildtool_depend>
