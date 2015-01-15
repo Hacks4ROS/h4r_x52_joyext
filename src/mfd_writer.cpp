@@ -291,8 +291,10 @@ public:
 			}
 
 			if (!i % 2 || i == 0)
-				ROS_ERROR(
-						"Error in setup string, missing string for upper end!");
+			{	
+				ROS_ERROR("Error in setup string, missing string for upper end!");
+				exit(1);
+			}
 			//Get last one
 			pair.second = std::numeric_limits<T>::max();
 			this->ranges.insert(pair);
