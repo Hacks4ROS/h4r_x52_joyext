@@ -13,7 +13,7 @@
  */
 
 
-#include "x52_joyext.h"
+#include <h4r_x52_joyext/x52_joyext.h>
 
 X52_JoyExt::X52_JoyExt(ros::NodeHandle &n):nh(n)
 {
@@ -66,28 +66,28 @@ X52_JoyExt::~X52_JoyExt()
 	delete loop_rate;
 }
 
-void X52_JoyExt::cb_leds(const x52_joyext::x52_led_colorConstPtr &msg)
+void X52_JoyExt::cb_leds(const h4r_x52_joyext::x52_led_colorConstPtr &msg)
 {
-	if(msg->color_leds[x52_joyext::x52_led_color::LED_FIRE])
+	if(msg->color_leds[h4r_x52_joyext::x52_led_color::LED_FIRE])
 	{
-		if( msg->color_leds[ x52_joyext::x52_led_color::LED_FIRE ] >2)
-			ROS_WARN("WRONG VALUE (%i) FOR LED FOUND! Value must be in the range of 0-2",msg->color_leds[x52_joyext::x52_led_color::LED_FIRE]);
-		LED[0]=(msg->color_leds[x52_joyext::x52_led_color::LED_FIRE]>1);
+		if( msg->color_leds[ h4r_x52_joyext::x52_led_color::LED_FIRE ] >2)
+			ROS_WARN("WRONG VALUE (%i) FOR LED FOUND! Value must be in the range of 0-2",msg->color_leds[h4r_x52_joyext::x52_led_color::LED_FIRE]);
+		LED[0]=(msg->color_leds[h4r_x52_joyext::x52_led_color::LED_FIRE]>1);
 		updateLED[0]=true;
 	}
 	//  void setLEDs(uint8_t inValue, uint8_t *red, uint8_t *green, bool *update)
-	setLEDs(msg->color_leds[x52_joyext::x52_led_color::LED_A]	,&LED[X52PRO_LED_ARED-1] ,&LED[X52PRO_LED_AGREEN-1] ,&updateLED[1]);
-	setLEDs(msg->color_leds[x52_joyext::x52_led_color::LED_B]	,&LED[X52PRO_LED_BRED-1] ,&LED[X52PRO_LED_BGREEN-1] ,&updateLED[2]);
-	setLEDs(msg->color_leds[x52_joyext::x52_led_color::LED_D]	,&LED[X52PRO_LED_DRED-1] ,&LED[X52PRO_LED_DGREEN-1] ,&updateLED[3]);
-	setLEDs(msg->color_leds[x52_joyext::x52_led_color::LED_E]	,&LED[X52PRO_LED_ERED-1] ,&LED[X52PRO_LED_EGREEN-1] ,&updateLED[4]);
-	setLEDs(msg->color_leds[x52_joyext::x52_led_color::LED_T12]	,&LED[X52PRO_LED_T1RED-1],&LED[X52PRO_LED_T1GREEN-1],&updateLED[5]);
-	setLEDs(msg->color_leds[x52_joyext::x52_led_color::LED_T34]	,&LED[X52PRO_LED_T2RED-1],&LED[X52PRO_LED_T2GREEN-1],&updateLED[6]);
-	setLEDs(msg->color_leds[x52_joyext::x52_led_color::LED_T56]	,&LED[X52PRO_LED_T3RED-1],&LED[X52PRO_LED_T3GREEN-1],&updateLED[7]);
-	setLEDs(msg->color_leds[x52_joyext::x52_led_color::LED_POV2],&LED[X52PRO_LED_CORED-1],&LED[X52PRO_LED_COGREEN-1],&updateLED[8]);
-	setLEDs(msg->color_leds[x52_joyext::x52_led_color::LED_I]	,&LED[X52PRO_LED_IRED-1] ,&LED[X52PRO_LED_IGREEN-1] ,&updateLED[9]);
+	setLEDs(msg->color_leds[h4r_x52_joyext::x52_led_color::LED_A]	,&LED[X52PRO_LED_ARED-1] ,&LED[X52PRO_LED_AGREEN-1] ,&updateLED[1]);
+	setLEDs(msg->color_leds[h4r_x52_joyext::x52_led_color::LED_B]	,&LED[X52PRO_LED_BRED-1] ,&LED[X52PRO_LED_BGREEN-1] ,&updateLED[2]);
+	setLEDs(msg->color_leds[h4r_x52_joyext::x52_led_color::LED_D]	,&LED[X52PRO_LED_DRED-1] ,&LED[X52PRO_LED_DGREEN-1] ,&updateLED[3]);
+	setLEDs(msg->color_leds[h4r_x52_joyext::x52_led_color::LED_E]	,&LED[X52PRO_LED_ERED-1] ,&LED[X52PRO_LED_EGREEN-1] ,&updateLED[4]);
+	setLEDs(msg->color_leds[h4r_x52_joyext::x52_led_color::LED_T12]	,&LED[X52PRO_LED_T1RED-1],&LED[X52PRO_LED_T1GREEN-1],&updateLED[5]);
+	setLEDs(msg->color_leds[h4r_x52_joyext::x52_led_color::LED_T34]	,&LED[X52PRO_LED_T2RED-1],&LED[X52PRO_LED_T2GREEN-1],&updateLED[6]);
+	setLEDs(msg->color_leds[h4r_x52_joyext::x52_led_color::LED_T56]	,&LED[X52PRO_LED_T3RED-1],&LED[X52PRO_LED_T3GREEN-1],&updateLED[7]);
+	setLEDs(msg->color_leds[h4r_x52_joyext::x52_led_color::LED_POV2],&LED[X52PRO_LED_CORED-1],&LED[X52PRO_LED_COGREEN-1],&updateLED[8]);
+	setLEDs(msg->color_leds[h4r_x52_joyext::x52_led_color::LED_I]	,&LED[X52PRO_LED_IRED-1] ,&LED[X52PRO_LED_IGREEN-1] ,&updateLED[9]);
 }
 
-void  X52_JoyExt::cb_mfd_text(const x52_joyext::x52_mfdConstPtr &msg)
+void  X52_JoyExt::cb_mfd_text(const h4r_x52_joyext::x52_mfdConstPtr &msg)
 {
 	int curPos=msg->pos+16*msg->line;
 
@@ -135,7 +135,7 @@ void  X52_JoyExt::cb_mfd_text(const x52_joyext::x52_mfdConstPtr &msg)
 	ROS_DEBUG("Line 2: %s", mfd_content[2].c_str());
 }
 
-void  X52_JoyExt::cb_date(const x52_joyext::x52_dateConstPtr &msg)
+void  X52_JoyExt::cb_date(const h4r_x52_joyext::x52_dateConstPtr &msg)
 {
 		Date[2]=msg->date_field_left;
 		Date[1]=msg->date_field_center;
@@ -143,7 +143,7 @@ void  X52_JoyExt::cb_date(const x52_joyext::x52_dateConstPtr &msg)
 		updateDate=true;
 }
 
-void  X52_JoyExt::cb_time(const x52_joyext::x52_timeConstPtr &msg)
+void  X52_JoyExt::cb_time(const h4r_x52_joyext::x52_timeConstPtr &msg)
 {
 	if(msg->set_time)
 	{

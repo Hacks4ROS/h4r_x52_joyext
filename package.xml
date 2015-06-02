@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>x52_joyext</name>
+  <name>h4r_x52_joyext</name>
   <version>1.0.1</version>
   <description>The x52_joyext is used for controlling the MFD on the Saitek X52 Pro Joystick.</description>
   <maintainer email="cyborg-x1@gmail.com">Christian Holl</maintainer>
@@ -18,7 +18,8 @@
   <run_depend>roscpp</run_depend>
   <run_depend>std_msgs</run_depend>
   <run_depend>message_runtime</run_depend>
-  <run_depend>libx52pro-dev</run_depend>
+  <run_depend>libx52pro</run_depend>
+  
   <export>
   </export>
 </package>

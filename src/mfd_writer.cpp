@@ -114,7 +114,7 @@ High	| Value >6
 
 Copy\&Paste Launchfile Code:
 
-	<node pkg="x52_joyext" type="x52_mfd_writer_node" name="x52_mfd_writer_string" output="screen">
+	<node pkg="h4r_x52_joyext" type="x52_mfd_writer_node" name="x52_mfd_writer_string" output="screen">
 		<param name="input_type" value="11"/>
 		<param name="line" value="1"/>
 		<param name="pos" value="0"/>
@@ -163,7 +163,7 @@ a) \anchor mfd_std Standard value\n
 #include <std_msgs/Bool.h>
 #include <boost/algorithm/string.hpp>
 #include <sensor_msgs/Joy.h>
-#include <x52_joyext/x52_mfd.h>
+#include <h4r_x52_joyext/x52_mfd.h>
 
 enum
 {
@@ -301,8 +301,8 @@ public:
 
 		}
 
-		pub = n->advertise<x52_joyext::x52_mfd>("mfd_text", 1,1);
-		x52_joyext::x52_mfd init_msg;
+		pub = n->advertise<h4r_x52_joyext::x52_mfd>("mfd_text", 1,1);
+		h4r_x52_joyext::x52_mfd init_msg;
 		init_msg.clearDisplay=false;
 		init_msg.line=line;
 		init_msg.pos=pos;
@@ -320,7 +320,7 @@ public:
 	std::string get_value_string(V value)
 	{
 
-		x52_joyext::x52_mfd msg;
+		h4r_x52_joyext::x52_mfd msg;
 		std::ostringstream ss;
 		std::string value_string;
 		ss<<value;
@@ -332,7 +332,7 @@ public:
 
 	std::string get_value_string(char value)
 	{
-		x52_joyext::x52_mfd msg;
+		h4r_x52_joyext::x52_mfd msg;
 		std::ostringstream ss;
 		std::string value_string;
 
@@ -372,7 +372,7 @@ public:
 	template <typename V>
 	void progressValue(V value)
 	{
-		x52_joyext::x52_mfd msg;
+		h4r_x52_joyext::x52_mfd msg;
 		msg.clearDisplay = false;
 		if (stringprint)
 		{

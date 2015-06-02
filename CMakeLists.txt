@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(x52_joyext)
+project(h4r_x52_joyext)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -10,13 +10,21 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
 )
 
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(LIBX52PRO REQUIRED libx52pro)
-
+#find_package(PkgConfig REQUIRED)
+#pkg_check_modules(LIBX52PRO REQUIRED libx52pro0 libx52pro-dev)
 find_library(LIBX52 libx52pro.so /usr/lib/libx52pro.so)
+#include_directories(SYSTEM ${LIBX52_INCLUDE_DIRS})
 
 ## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS system thread)
+
+
+
+
+#find_package(PkgConfig REQUIRED)
+#pkg_search_module(LIBX52PRO_DEV REQUIRED libx52pro-dev)
+#include_directories(SYSTEM ${LIBX52PRO_INCLUDE_DIRS})
+#find_package(libx52pro-dev)
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed

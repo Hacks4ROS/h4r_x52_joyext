@@ -1,5 +1,5 @@
 <launch>
-	<node pkg="x52_joyext" type="x52_mfd_writer_node" name="x52_mfd_writer_value" output="screen"> 
+	<node pkg="h4r_x52_joyext" type="x52_mfd_writer_node" name="x52_mfd_writer_value" output="screen"> 
 			<param name="input_type" value="11"/>
 			<param name="line" value="2"/>
 			<param name="pos" value="0"/>

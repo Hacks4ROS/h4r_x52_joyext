@@ -13,7 +13,7 @@
  */
 
 #include <ros/ros.h>
-#include "x52_joyext.h"
+#include <h4r_x52_joyext/x52_joyext.h>
 
 int main(int argc, char **argv)
 {

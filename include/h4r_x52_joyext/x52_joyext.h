@@ -29,10 +29,10 @@ You can use the following piece of code for your launchfile to start the node
 #include <boost/thread/mutex.hpp>
 #include <string>
 #include <inttypes.h>
-#include "x52_joyext/x52_date.h"
-#include "x52_joyext/x52_time.h"
-#include "x52_joyext/x52_led_color.h"
-#include "x52_joyext/x52_mfd.h"
+#include "h4r_x52_joyext/x52_date.h"
+#include "h4r_x52_joyext/x52_time.h"
+#include "h4r_x52_joyext/x52_led_color.h"
+#include "h4r_x52_joyext/x52_mfd.h"
 
 extern "C" {
 #include <x52pro.h>
@@ -81,22 +81,22 @@ class X52_JoyExt
 	  {
 		  switch(inValue)
 		  {
-		  case x52_joyext::x52_led_color::NO_STATUS_CHANGE:
+		  case h4r_x52_joyext::x52_led_color::NO_STATUS_CHANGE:
 			  *update=false;
 			  break;
-		  case x52_joyext::x52_led_color::OFF:
+		  case h4r_x52_joyext::x52_led_color::OFF:
 			  *red=0;
 			  *green=0;
 			  break;
-		  case x52_joyext::x52_led_color::RED:
+		  case h4r_x52_joyext::x52_led_color::RED:
 			  *red=1;
 			  *green=0;
 			  break;
-		  case x52_joyext::x52_led_color::GREEN:
+		  case h4r_x52_joyext::x52_led_color::GREEN:
 			  *red=0;
 			  *green=1;
 		  	  break;
-		  case x52_joyext::x52_led_color::YELLOW:
+		  case h4r_x52_joyext::x52_led_color::YELLOW:
 			  *red=1;
 			  *green=1;
 		  	  break;
@@ -108,10 +108,10 @@ class X52_JoyExt
 		  *update=true;
 	  }
 
-	void cb_leds(const x52_joyext::x52_led_colorConstPtr &msg);
-	void cb_mfd_text(const x52_joyext::x52_mfdConstPtr &msg);
-	void cb_date(const x52_joyext::x52_dateConstPtr &msg);
-	void cb_time(const x52_joyext::x52_timeConstPtr &msg);
+	void cb_leds(const h4r_x52_joyext::x52_led_colorConstPtr &msg);
+	void cb_mfd_text(const h4r_x52_joyext::x52_mfdConstPtr &msg);
+	void cb_date(const h4r_x52_joyext::x52_dateConstPtr &msg);
+	void cb_time(const h4r_x52_joyext::x52_timeConstPtr &msg);
 	void cb_brighnessMFD(const std_msgs::UInt8ConstPtr &msg);
 	void cb_brighnessLED(const std_msgs::UInt8ConstPtr &msg);
 

@@ -1,5 +1,5 @@
 <launch>
-	<node pkg="x52_joyext" type="x52_value2buttonColor_node" name="Color_Button_0" output="screen"> 
+	<node pkg="h4r_x52_joyext" type="x52_value2buttonColor_node" name="Color_Button_0" output="screen"> 
 		<param name="input_type" value="11"/>
 		<param name="joy_axis_button" value="4"/>
 		<param name="joy_axis_or_button" value="false"/>
@@ -9,7 +9,7 @@
 		<remap from="/Color_Button_0/led" to="/x52/leds" />
 	</node>
 		
-	<node pkg="x52_joyext" type="x52_value2buttonColor_node" name="Color_Button_1" output="screen"> 
+	<node pkg="h4r_x52_joyext" type="x52_value2buttonColor_node" name="Color_Button_1" output="screen"> 
 
 		<param name="input_type" value="11"/>
 		<param name="joy_axis_button" value="4"/>
@@ -23,7 +23,7 @@
 	
 	
 	<!-- Button Example -->
-	<node pkg="x52_joyext" type="x52_value2buttonColor_node" name="Color_Button_2" output="screen"> 
+	<node pkg="h4r_x52_joyext" type="x52_value2buttonColor_node" name="Color_Button_2" output="screen"> 
 		<param name="input_type" value="11"/>
 		<param name="joy_axis_or_button" value="true"/>
 		<param name="joy_axis_button" value="1"/>

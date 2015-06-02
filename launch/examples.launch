@@ -1,7 +1,7 @@
 <launch>
 	<node pkg="joy" type="joy_node" name="Joy" output="screen"/>
-	<node pkg="x52_joyext" type="x52_joyext_node" name="x52" output="screen" />
-	<include file="$(find x52_joyext)/launch/single_examples/mfd_writer_print_string.launch" />
-	<include file="$(find x52_joyext)/launch/single_examples/mfd_writer_print_value.launch" />
-	<include file="$(find x52_joyext)/launch/single_examples/value2button_E_xample.launch" />
+	<node pkg="h4r_x52_joyext" type="h4r_x52_joyext_node" name="x52" output="screen" />
+	<include file="$(find h4r_x52_joyext)/launch/single_examples/mfd_writer_print_string.launch" />
+	<include file="$(find h4r_x52_joyext)/launch/single_examples/mfd_writer_print_value.launch" />
+	<include file="$(find h4r_x52_joyext)/launch/single_examples/value2button_E_xample.launch" />
 </launch>

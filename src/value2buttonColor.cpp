@@ -99,7 +99,7 @@ Yellow	| Value >6
 
 Copy\&Paste Launchfile Code:
 
-	<node pkg="x52_joyext" type="x52_value2buttonColor_node" name="Color_Button_0" output="screen">
+	<node pkg="h4r_x52_joyext" type="x52_value2buttonColor_node" name="Color_Button_0" output="screen">
 		<param name="input_type" value="11"/>
 		<param name="joy_axis_button" value="4"/>
 		<param name="joy_axis_or_button" value="false"/>
@@ -133,7 +133,7 @@ a) \anchor col_std Standard value\n
 #include <std_msgs/Bool.h>
 #include <boost/algorithm/string.hpp>
 #include <sensor_msgs/Joy.h>
-#include <x52_joyext/x52_led_color.h>
+#include <h4r_x52_joyext/x52_led_color.h>
 
 enum
 {
@@ -248,7 +248,7 @@ public:
 		pair.second=std::numeric_limits<T>::max();
 		this->ranges.insert(pair);
 
-		x52_joyext::x52_led_color ledmsg;
+		h4r_x52_joyext::x52_led_color ledmsg;
 		if(led<0 || led>(int)ledmsg.color_leds.size())
 		{
 			ROS_ERROR("LED number out of range!");
@@ -258,7 +258,7 @@ public:
 		{
 			this->led=led;
 		}
-		pub=n->advertise< x52_joyext::x52_led_color >("led",1);
+		pub=n->advertise< h4r_x52_joyext::x52_led_color >("led",1);
 	}
 	~PublishLED()
 	{}
@@ -269,7 +269,7 @@ public:
 		{
 			if(it->second>value)
 			{
-				x52_joyext::x52_led_color msg;
+				h4r_x52_joyext::x52_led_color msg;
 				msg.color_leds[this->led]=it->first;
 				pub.publish(msg);
 				break;
