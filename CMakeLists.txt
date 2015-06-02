@@ -10,10 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
 )
 
-#find_package(PkgConfig REQUIRED)
-#pkg_check_modules(LIBX52PRO REQUIRED libx52pro0 libx52pro-dev)
 find_library(LIBX52 libx52pro.so /usr/lib/libx52pro.so)
-#include_directories(SYSTEM ${LIBX52_INCLUDE_DIRS})
 
 ## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS system thread)
