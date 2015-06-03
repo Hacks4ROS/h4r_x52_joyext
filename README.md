@@ -1,13 +1,10 @@
-x52_joyext
+h4r_x52_joyext
 ===========================================
-ROS package for Ubuntu + Groovy/Hydro to access the MFD  of the Saitek X52 Pro Joystick.
-
+ROS package to access the MFD  of the Saitek X52 Pro Joystick.
 
 
 Installation
 -------------------------------------------
-This package was developed and tested for Ubuntu 12.04 and ROS Groovy/Hydro.
-
 ### Install system dependencies ###
     sudo apt-get install libx52pro0 libx52pro-dev
 
@@ -27,19 +24,17 @@ a `src/` folder within it, then execute:
 
 Download the package source from the github repository:
 
-    git clone https://github.com/cyborg-x1/x52_joyext.git
+    git clone https://github.com/Hacks4ROS/h4r_x52_joyext
 
 Compile your catkin workspace:
 
     cd ~/catkin_ws
     catkin_make
 
-
-
 Documentation
 -------------------------------------------
 For doxygen documentation, please see:
-http://cyborg-x1.github.io/x52_joyext/doc/doxygen/index.html
+http://hacks4ros.github.io/h4r_x52_joyext/doc/doxygen/index.html
 
 This package is also documented at:
-http://wiki.ros.org/x52_joyext
+http://wiki.ros.org/h4r_x52_joyext

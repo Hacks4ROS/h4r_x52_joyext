@@ -2,24 +2,26 @@
 <package>
   <name>h4r_x52_joyext</name>
   <version>1.0.1</version>
-  <description>The x52_joyext is used for controlling the MFD on the Saitek X52 Pro Joystick.</description>
+  <description>The h4r_x52_joyext is used for controlling the MFD and the LEDs on the Saitek X52 Pro Joystick.</description>
   <maintainer email="cyborg-x1@gmail.com">Christian Holl</maintainer>
   <maintainer email="muhrix@gmail.com">Murilo F. M.</maintainer>
-  <url type="website">http://wiki.ros.org/x52_joyext</url>
-  <url type="bugtracker">https://github.com/cyborg-x1/x52_joyext/issues</url>
-  <url type="repository">https://github.com/cyborg-x1/x52_joyext</url>
+  <url type="website">http://wiki.ros.org/h4r_x52_joyext</url>
+  <url type="bugtracker">https://github.com/Hacks4ROS/h4r_x52_joyext/issues</url>
+  <url type="repository">https://github.com/Hacks4ROS/h4r_x52_joyext</url>
   <author email="cyborg-x1@gmail.com">Christian Holl</author>
   <license>BSD</license>
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>roscpp</build_depend>
   <build_depend>std_msgs</build_depend>
   <build_depend>message_generation</build_depend>
-  <build_depend>libx52pro-dev</build_depend>
   <run_depend>roscpp</run_depend>
   <run_depend>std_msgs</run_depend>
   <run_depend>message_runtime</run_depend>
+ 
+  <!-- System dependencies -->
+  <build_depend>libx52pro-dev</build_depend>
   <run_depend>libx52pro</run_depend>
-  
+ 
   <export>
   </export>
 </package>
