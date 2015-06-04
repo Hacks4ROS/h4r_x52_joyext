@@ -30,6 +30,16 @@ Compile your catkin workspace:
 
     cd ~/catkin_ws
     catkin_make
+    
+Copy the udev file inside h4r_x52_joyext/udev to /etc/udev/rules.d
+
+    sudo cp $(rospack find h4r_x52_joyext)/udev/99-x52pro.rules /etc/udev/rules.d
+    sudo service udev restart
+    
+If your joystick is already plugged into your computer, 
+remove it and plug it in again, otherwise you are not allowed to access 
+the device, because the new rights are only applied to devices connected after
+the rule change.
 
 Documentation
 -------------------------------------------
