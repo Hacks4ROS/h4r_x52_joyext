@@ -1,5 +1,9 @@
 /* The standard CSS for doxygen 1.8.3.1 */
 
+body
+{
+	background-color: grey;
+}
 
 /* @group Heading Levels */
 
@@ -10,21 +14,22 @@ h1, h2, h3, h4, h5, h6 {
 	-o-transition: text-shadow 0.5s linear;
 	transition: text-shadow 0.5s linear;
 	margin-right: 15px;
+	color: grey;
 }
 
 h1.glow, h2.glow, h3.glow, h4.glow, h5.glow, h6.glow {
-	text-shadow: 0 0 15px green;
+	text-shadow: 0 0 15px red;
 }
 
 
 div.line.glow {
-	background-color: green;
-	box-shadow: 0 0 10px green;
+	background-color: red;
+	box-shadow: 0 0 10px red;
 }
 
 .tabs, .tabs2, .tabs3 {
-	background-color: #333333;
     background-image: none;
+    background-color: white;
     width: 100%;
     z-index: 101;
     font-size: 13px;
@@ -32,10 +37,18 @@ div.line.glow {
 
 }
 
+.textblock {
+    background: white;
+    padding: 1em;
+    border-radius: 0.5em;
+}
+
+
+
 .tablist a {
 
 	background-image:none;
-	background-color: #333333;
+	background-color:transparent;
 	color: #FFFFFF;
     text-decoration: none;
     text-shadow: 0px 1px 1px rgba(0, 0, 0, 1.0);
@@ -46,20 +59,20 @@ div.line.glow {
 	background-color: #AAAA00;
 	
 	/* Safari 4-5, Chrome 1-9 */ 
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#00ff00), to(#333333)); 
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff0000), to(#333333)); 
 	/* Safari 5.1, Chrome 10+ */ 
-	background: -webkit-linear-gradient(top, #333333, #00ff00); 
+	background: -webkit-linear-gradient(top, #333333, #e6e6e6); 
 	/* Firefox 3.6+ */ 
-	background: -moz-linear-gradient(top, #333333, #00ff00); 
+	background: -moz-linear-gradient(top, #333333, #e6e6e6); 
 	/* IE 10 */ 
-	background: -ms-linear-gradient(top, #333333, #00ff00); 
+	background: -ms-linear-gradient(top, #333333, #e6e6e6); 
 	/* Opera 11.10+ */ 
-	background: -o-linear-gradient(top, #333333, #00ff00);
+	background: -o-linear-gradient(top, #333333, #e6e6e6);
 
 	color: #000000;
     text-shadow: 0px 1px 1px rgba(255, 255, 255, 1.0);
     text-decoration: none;
-    border-bottom-left-radius:10px;
+    
     border-bottom-right-radius:10px;
 }
 
@@ -69,35 +82,45 @@ div.line.glow {
 	background-color: #AAAA00;
 	
 	/* Safari 4-5, Chrome 1-9 */ 
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#00ff00), to(#333333)); 
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff0000), to(#333333)); 
 	/* Safari 5.1, Chrome 10+ */ 
-	background: -webkit-linear-gradient(top, #333333, #00ff00); 
+	background: -webkit-linear-gradient(top, #333333, #e6e6e6); 
 	/* Firefox 3.6+ */ 
-	background: -moz-linear-gradient(top, #333333, #00ff00); 
+	background: -moz-linear-gradient(top, #333333, #e6e6e6); 
 	/* IE 10 */ 
-	background: -ms-linear-gradient(top, #333333, #00ff00); 
+	background: -ms-linear-gradient(top, #333333, #e6e6e6); 
 	/* Opera 11.10+ */ 
-	background: -o-linear-gradient(top, #333333, #00ff00);
+	background: -o-linear-gradient(top, #333333, #e6e6e6);
 
 	color: #000000;
     text-shadow: 0px 1px 1px rgba(255, 255, 255, 1.0);
     text-decoration: none;
-    
-    border-bottom-left-radius:10px;
+
     border-bottom-right-radius:10px;
+
 }
 
 #titlearea
 {
-	color: #FFFFFF;
-	background-color: black;
+	color: e6e6e6;
+	background-color: white;
 	padding: 0px;
-	margin: 0px;
 	width: 100%;
-	border-bottom: 1px solid #00ff00;
+	border-bottom: 1px solid #ff0000;
+}
+#projectname {
+  font: 400% Helvetica,Tahoma,Arial,sans-serif;
+  font-weight: bold;
+  padding: 0px 0px;
+  color: rgba(128, 128, 128, 0.8);
+  text-shadow:  0 0.2em 0.2em #e6e6e6, 0 0 0 #ff0000;
 }
 
-
+#projectbrief {
+    font: 120% Tahoma,Arial,sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
 
 .ui-resizable-e {
   background: repeat scroll right center transparent;
@@ -109,19 +132,41 @@ div.line.glow {
   width:6px;
 }
 
+#projectlogo
+{
+	display: none;
+}
+
+div.header
+{
+	/*position: fixed;*/
+	display: box;
+	background: white;
+	border-bottom: none;
+}
+
+#nav-sync
+{
+	display: none;
+}
+
+#nav-tree
+{
+	background-image: none;
+	background-repeat: none;
+	background-color: white;
+}
+
+.textblock
+{
+}
+
 #nav-tree .selected {
   background-image: none;
   background-color: #333333;
   background-repeat:repeat-x;
   color: #FFFFFF;
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 1.0);
-}
-
-.ui-resizable-handle {
-  display:none;
-  font-size:0.1px;
-  position:absolute;
-  z-index:1;
 }
 
 .navpath ul {
@@ -176,13 +221,6 @@ a {
     color: rgb(255, 255, 255);
 }
 
-#projectname {
-    font: 300% Helvetica,Tahoma,Arial,sans-serif;
-    margin: 0px;
-    padding: 0px 0px;
-    color: white;
-    text-shadow: 0 0 0.2em #00FF00, 0 0 0.2em #00FF00;
-}
 
 div.header {
     background-image: none;
