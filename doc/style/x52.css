@@ -5,6 +5,9 @@ body
 	background-color: grey;
 }
 
+
+
+
 /* @group Heading Levels */
 
 h1, h2, h3, h4, h5, h6 {
@@ -37,13 +40,12 @@ div.line.glow {
 
 }
 
-.textblock {
+.textblock, ul, ol, div.directory, #doc-content h3{
     background: white;
     padding: 1em;
     border-radius: 0.5em;
+    width: auto;
 }
-
-
 
 .tablist a {
 
@@ -143,6 +145,8 @@ div.header
 	display: box;
 	background: white;
 	border-bottom: none;
+	border-radius: 10px;
+	margin: 0.5em;
 }
 
 #nav-sync
@@ -157,9 +161,7 @@ div.header
 	background-color: white;
 }
 
-.textblock
-{
-}
+
 
 #nav-tree .selected {
   background-image: none;
