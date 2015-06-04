@@ -191,10 +191,9 @@ target_link_libraries(x52_mfd_writer_node
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
 
-#install(FILES
-#  udev/99-x52pro.rules
-#  DESTINATION /etc/udev/rules.d/
-#)
+install(DIRECTORY launch udev
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
 
 #############
 ## Testing ##
