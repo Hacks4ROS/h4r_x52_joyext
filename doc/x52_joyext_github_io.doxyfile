@@ -45,7 +45,7 @@ PROJECT_BRIEF = "LED and MFD Control for Saitek X52 Pro"
 # exceed 55 pixels and the maximum width should not exceed 200 pixels.
 # Doxygen will copy the logo to the output directory.
 
-PROJECT_LOGO = style/x52_joyext_logo.png
+PROJECT_LOGO = style/h4r_logo.png
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute)
 # base path where the generated documentation will be put.

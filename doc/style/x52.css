@@ -40,15 +40,28 @@ div.line.glow {
 
 }
 
-.textblock, ul, ol, div.directory, #doc-content h3{
+.textblock, ul, ol, div.directory, #doc-content h3, div.qindex, div.center, div.dynheader, code
+{
     background: white;
     padding: 1em;
     border-radius: 0.5em;
     width: auto;
+    margin-bottom: 0.5em;
+    padding-left: 2em;
+}
+
+h2.groupheader {
+    background: white;
+    width: auto;
+}
+
+#doc-content table{
+	display: box;
+    background: white;
+    border-radius: 0.5em;
 }
 
 .tablist a {
-
 	background-image:none;
 	background-color:transparent;
 	color: #FFFFFF;
