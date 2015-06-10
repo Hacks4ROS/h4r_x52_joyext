@@ -147,9 +147,10 @@ h2.groupheader {
   width:6px;
 }
 
-#projectlogo
+#projectlogo img
 {
-	display: none;
+	height: 128px;
+	width: 128px;
 }
 
 div.header
