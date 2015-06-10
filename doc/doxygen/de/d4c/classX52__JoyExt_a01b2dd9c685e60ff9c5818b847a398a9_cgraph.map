@@ -1,0 +1,10 @@
+<map id="X52_JoyExt::X52_JoyExt" name="X52_JoyExt::X52_JoyExt">
+<area shape="rect" id="node2" href="$de/d4c/classX52__JoyExt.html#ac552316ec96742bd9f729e1eb011b317" title="X52_JoyExt::cb_brighnessLED" alt="" coords="229,5,433,32"/>
+<area shape="rect" id="node3" href="$de/d4c/classX52__JoyExt.html#aa6f632a273dfd8463d4757535ade56d0" title="X52_JoyExt::cb_brighnessMFD" alt="" coords="227,56,434,83"/>
+<area shape="rect" id="node4" href="$de/d4c/classX52__JoyExt.html#aaa2e377ba40bc5a51a7799558c9e79af" title="X52_JoyExt::cb_date" alt="" coords="257,107,404,133"/>
+<area shape="rect" id="node5" href="$de/d4c/classX52__JoyExt.html#afb843312912443201d252af5bd8b85dd" title="X52_JoyExt::cb_leds" alt="" coords="257,157,404,184"/>
+<area shape="rect" id="node7" href="$de/d4c/classX52__JoyExt.html#ad8be8b46f4dbdb76c97c7cb5c5802d56" title="X52_JoyExt::cb_mfd_text" alt="" coords="244,208,417,235"/>
+<area shape="rect" id="node8" href="$de/d4c/classX52__JoyExt.html#a78aab05be979968f3667fea372ca391d" title="X52_JoyExt::cb_time" alt="" coords="257,259,404,285"/>
+<area shape="rect" id="node9" href="$de/d4c/classX52__JoyExt.html#af2f31892711304b018c2af7efeeff386" title="X52_JoyExt::send_to\l_joystick" alt="" coords="257,310,404,351"/>
+<area shape="rect" id="node6" href="$de/d4c/classX52__JoyExt.html#ae1cc7ac33b2ae5e19ef48c045a1006d4" title="X52_JoyExt::setLEDs" alt="" coords="483,157,635,184"/>
+</map>
