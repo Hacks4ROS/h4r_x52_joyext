@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>h4r_x52_joyext</name>
-  <version>1.0.1</version>
+  <version>1.1.0</version>
   <description>The h4r_x52_joyext is used for controlling the MFD and the LEDs on the Saitek X52 Pro Joystick.</description>
   <maintainer email="cyborg-x1@gmail.com">Christian Holl</maintainer>
   <maintainer email="muhrix@gmail.com">Murilo F. M.</maintainer>

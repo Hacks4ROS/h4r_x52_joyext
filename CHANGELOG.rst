@@ -2,8 +2,8 @@
 Changelog for package h4r_x52_joyext
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.1.0 (2015-06-10)
+------------------
 * change doxyfile for logo
 * exchange logo
 * change css
