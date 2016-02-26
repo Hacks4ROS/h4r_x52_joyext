@@ -1,0 +1,6 @@
+SUBSYSTEM!="usb_device", ACTION!="add", GOTO="x52_end"
+
+# X52 PRO
+ATTR{idVendor}=="06a3", ATTR{idProduct}=="0762", MODE="660", GROUP="plugdev"
+
+LABEL="x52_end"
