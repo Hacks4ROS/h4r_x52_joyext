@@ -10,7 +10,9 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
 )
 
-find_library(LIBX52 libx52pro.so /usr/lib/libx52pro.so)
+
+#find_library(LIBX52 libx52pro.so /usr/lib/libx52pro.so)
+find_library(LIBUSB libusb.so)
 
 ## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS system thread)
@@ -107,10 +109,15 @@ catkin_package(
 include_directories( include
   ${catkin_INCLUDE_DIRS}
   ${Boost_INCLUDE_DIRS}
-  ${LIBX52PRO_INCLUDE_DIRS}
 )
 
-## Declare a cpp library
+## x52_pro_lib
+add_library(x52_pro_lib 
+src/x52_pro_lib/x52output.c 
+src/x52_pro_lib/x52pro.c
+)
+
+## x52_joyext
 add_library(x52_joyext src/x52_joyext.cpp)
 
 ## Declare a cpp executable
@@ -127,26 +134,31 @@ add_dependencies(x52_mfd_writer_node x52_joyext_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(x52_joyext
-   ${LIBX52}
+   x52_pro_lib
    ${catkin_LIBRARIES}
    ${LIBX52PRO_LIBRARIES}
 )
 
+target_link_libraries(x52_pro_lib
+    ${LIBUSB}
+)
+
+
 target_link_libraries(x52_joyext_node
    x52_joyext
-   ${LIBX52}
+   x52_pro_lib
    ${catkin_LIBRARIES}
    ${LIBX52PRO_LIBRARIES}
 )
  
 target_link_libraries(x52_value2buttonColor_node
-   ${LIBX52}
+   x52_pro_lib
    ${catkin_LIBRARIES}
    ${LIBX52PRO_LIBRARIES}
 )
 
 target_link_libraries(x52_mfd_writer_node
-   ${LIBX52}
+   x52_pro_lib
    ${catkin_LIBRARIES}
    ${LIBX52PRO_LIBRARIES}
 )
@@ -172,6 +184,7 @@ target_link_libraries(x52_mfd_writer_node
    x52_joyext_node
    x52_value2buttonColor_node
    x52_mfd_writer_node
+   x52_pro_lib
    ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
    LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
    RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}

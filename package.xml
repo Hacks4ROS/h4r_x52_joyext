@@ -10,6 +10,7 @@
   <url type="repository">https://github.com/Hacks4ROS/h4r_x52_joyext</url>
   <author email="cyborgx1@gmail.com">Christian Holl</author>
   <license>BSD</license>
+  <license>LGPL</license> <!-- LIBX52PRO -->
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>roscpp</build_depend>
   <build_depend>std_msgs</build_depend>
@@ -18,10 +19,17 @@
   <run_depend>std_msgs</run_depend>
   <run_depend>message_runtime</run_depend>
  
-  <!-- System dependencies -->
+  <!-- System dependencies
+  	We compile the library ourselfs due to problems in installing the library and 
+ 	because of being not availabile for other systems than Ubuntu. 	
   <build_depend>libx52pro-dev</build_depend>
   <run_depend>libx52pro</run_depend>
- 
+
+   instead we need libusb to compile and run the library 
+  -->
+  <build_depend>libusb-dev</build_depend>  
+  <run_depend>libusb</run_depend>
+  
   <export>
   </export>
 </package>
